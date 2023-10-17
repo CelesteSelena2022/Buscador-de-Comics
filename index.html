@@ -4,10 +4,140 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
-    <script src="js/api.js"></script>
+    <main>
+        <nav class="navbar is-info" role="navigation" aria-label="main navigation">
+            <div class="navbar-start">
+                <a class="navbar-item">
+                    Careers
+                </a>
+                <a class="navbar-item">
+                    Home
+                </a>
+                <a class="navbar-item">
+                    Create Job
+                </a>
+            </div>
+        </nav>
+        <section>
+            <div class="container mt-5">
+                <form action="">
+                    <div class="field is-grouped is-grouped-centered">
+                        <div class="control">
+                            <div class="select">
+                                <select>
+                                    <option>Location</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="control">
+                            <div class="select">
+                                <select>
+                                    <option>Seniority</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="control">
+                            <div class="select">
+                                <select>
+                                    <option>Category</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="control">
+                            <button class="button is-info" type="submit">Search</button>
+                        </div>
+                        <div class="control">
+                            <button class="button is-info is-outlined" type="button">Clear</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+        <section class="section">
+            <div class="container">
+                <div class="columns is-multiline">
+                    <div class="column is-one-third">
+                        <!-- <div class="card">
+                            <div class="card-content">
+                                <p class="title is-5">Tarjeta</p>
+                                <p class="subtitle is-6">Contenido de la tarjeta 1</p>
+                                <span class="tag is-info">Tag label</span>
+                                <span class="tag is-info">Tag label</span>
+                                <span class="tag is-info">Tag label</span>
+                                <div>
+                                    <button class="button is-link mt-3">Button</button>
+                                </div>
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="notification is-danger is-light is-hidden">
+            <div class="columns is-vcentered">
+                <div class="column is-narrow">
+                    <p class="subtitle is-6">Are you sure to delete this job?</p>
+                </div>
+                <div class="column is-narrow">
+                    <div class="buttons">
+                        <button class="button is-danger is-small">Delete</button>
+                        <button class="button is-light is-small">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- vista-createJob y vista-editJob -->
+        <section class="is-hidden">
+            <div class="container">
+                <div class="columns is-multiline">
+                    <div class="column is-8-widescreen is-10-desktop is-offset-2-widescreen is-offset-1-desktop">
+                            <div class="field">
+                                <label class="label" for="descripcion-input">Job title</label>
+                                <div class="control">
+                                    <div class="is-fullwidth">
+                                        <input class="input" type="text" name="" id="descripcion-input">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <label class="label" for="monto-input">Description</label>
+                                <div class="control">
+                                    <div class="control">
+                                        <div class="is-fullwidth">
+                                            <textarea class="textarea"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <label class="label" for="tipo-select">Tags</label>
+                                <div class="control">
+                                    <div class="is-fullwidth">
+                                        <input class="input" type="text" name="" id="descripcion-input">
+                                    </div>
+                                    <div class="is-fullwidth mt-2">
+                                        <input class="input" type="text" name="" id="descripcion-input">
+                                    </div>
+                                    <div class="is-fullwidth mt-2">
+                                        <input class="input" type="text" name="" id="descripcion-input">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="buttons mt-4">
+                                <button class="button is-success" id="agregar-operacion-boton">
+                                    Edit
+                                </button>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
     <script src="js/main.js"></script>
+    <script src="js/api.js"></script>
 </body>
 </html>
