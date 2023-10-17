@@ -77,9 +77,7 @@
                 </div>
             </div>
         </section>
-        <!-- <section id="vista-createJob"></section>
-        <section id="vista-editJob"></section> -->
-        <div class="notification is-danger is-light">
+        <div class="notification is-danger is-light is-hidden">
             <div class="columns is-vcentered">
                 <div class="column is-narrow">
                     <p class="subtitle is-6">Are you sure to delete this job?</p>
@@ -92,6 +90,52 @@
                 </div>
             </div>
         </div>
+        <!-- vista-createJob y vista-editJob -->
+        <section class="is-hidden">
+            <div class="container">
+                <div class="columns is-multiline">
+                    <div class="column is-8-widescreen is-10-desktop is-offset-2-widescreen is-offset-1-desktop">
+                            <div class="field">
+                                <label class="label" for="descripcion-input">Job title</label>
+                                <div class="control">
+                                    <div class="is-fullwidth">
+                                        <input class="input" type="text" name="" id="descripcion-input">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <label class="label" for="monto-input">Description</label>
+                                <div class="control">
+                                    <div class="control">
+                                        <div class="is-fullwidth">
+                                            <textarea class="textarea"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <label class="label" for="tipo-select">Tags</label>
+                                <div class="control">
+                                    <div class="is-fullwidth">
+                                        <input class="input" type="text" name="" id="descripcion-input">
+                                    </div>
+                                    <div class="is-fullwidth mt-2">
+                                        <input class="input" type="text" name="" id="descripcion-input">
+                                    </div>
+                                    <div class="is-fullwidth mt-2">
+                                        <input class="input" type="text" name="" id="descripcion-input">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="buttons mt-4">
+                                <button class="button is-success" id="agregar-operacion-boton">
+                                    Edit
+                                </button>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
     <script src="js/api.js"></script>
     <script src="js/main.js"></script>
