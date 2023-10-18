@@ -2,7 +2,7 @@ const $ = (selector) => document.querySelector(selector);
 const $$ = (selector) => document.querySelectorAll(selector);
 
 const showView = (view) => {
-    $$(".view").forEach((view) => view.classList.add("is-hidden"));
+    $$(".is-hidden").forEach((view) => view.classList.add("is-hidden"));
     $(`#${view}`).classList.remove("is-hidden");
 };
 
