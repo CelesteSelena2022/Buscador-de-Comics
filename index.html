@@ -16,10 +16,10 @@
                         <button class="button is-info" type="button">Careers</button>
                     </div>
                     <div class="control">
-                        <button class="button is-info" type="button">Home</button>
+                        <button class="button is-info" type="button" id="home-btn">Home</button>
                     </div>
                     <div class="control">
-                        <button class="button is-info" type="button">Create Job</button>
+                        <button class="button is-info" type="button" id="create-job">Create Job</button>
                     </div>
                 </div>
             </div>
@@ -60,17 +60,17 @@
             </div>
         </section>
         <!-- Spinner -->
-        <div class="container-spinner is-hidden" id="spinner">
+        <div class="view container-spinner" id="spinner">
             <span class="loader"></span>
         </div>
-        <section class="section is-hidden">
+        <section class="section view" id="cards">
             <div class="container">
                 <div class="columns is-multiline" id="container-cards">
                     <!-- cards -->
                 </div>
             </div>
         </section>        
-        <div class="notification is-danger is-light is-hidden">
+        <div class="view is-hidden notification is-danger is-light">
             <div class="columns is-vcentered">
                 <div class="column is-narrow">
                     <p class="subtitle is-6">Are you sure to delete this job?</p>
@@ -84,7 +84,7 @@
             </div>
         </div>
         <!-- vista-createJob y vista-editJob -->
-        <section class="is-hidden">
+        <section class="view is-hidden">
             <div class="container">
                 <div class="columns is-multiline">
                     <div class="column is-8-widescreen is-10-desktop is-offset-2-widescreen is-offset-1-desktop">
