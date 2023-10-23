@@ -2,11 +2,13 @@ const $ = (selector) => document.querySelector(selector);
 const $$ = (selector) => document.querySelectorAll(selector);
 
 const showView = (view) => {
-    $$(".is-hidden").forEach((view) => view.classList.add("is-hidden"));
+    $$(".view").forEach((view) => view.classList.add("is-hidden"));
+    console.log(view);
     $(`#${view}`).classList.remove("is-hidden");
 };
 
 const renderJobs = (data) => {
+    showView("cards");
     $("#container-cards").innerHTML = "";
         for (let { name, description, location, category, seniority } of data) {
             $("#container-cards").innerHTML += `
@@ -28,48 +30,47 @@ const renderJobs = (data) => {
         }
 };
 
-const newJobs = () =>  {
-    let newJobs = {
-        name: "FrontEnd Developer", //value de input
-        image: "https://someimageaboutthejob.com/job1.jpg",
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Faucibus turpis in eu mi bibendum neque. Eu volutpat odio facilisis mauris sit amet massa vitae tortor. Congue nisi vitae suscipit tellus mauris a diam maecenas sed. Sagittis purus sit amet volutpat consequat mauris nunc congue. Sagittis purus sit amet volutpat consequat mauris nunc congue.",
-        location: "Remote",
-        category: "Development",
-        seniority: "Junior",
-        benefits: {
-            "vacation": "3 weeks",
-            "health_ensurance": "OSDE 210",
-            "internet_paid": true
-        },
-        salary: 350000,
-        long_term: true,
-        languages: ["ReactJS", "Javascript", "SASS", "NodeJS"]
-    }; //post para subirlo
-    addJobs(newJobs);
-}
+const createNewJob = () =>  {
+    let newJob = {
+    name: $("#job-title").value,
+    image: $("#job-image").value,
+    description: $("#job-description").value,
+    location: $("#job-location").value,
+    category: $("#job-category").value,
+    seniority: $("#job-seniority").value,
+    benefits: {
+        "vacation": $("#job-vacation").value,
+        "health_ensurance": $("#job-health-ensurance").value,
+        "internet_paid": $("#job-internet").checked
+    },
+    salary: $("#job-salary").value,
+    long_term: $("#job-long-term").checked,
+    languages: $("#job-languages").value,
+    languages: [$("#job-lan-1").value, $("#job-lan-2").value, $("#job-lan-1").value] // array
+    }
+    postJob(newJob)
+};
+
 
 
 //Limpiar el formulario
-
 const cleanForm = () => {
-    $("").value = "";
-    $("").value = "";
-    $("").value = "";
-    $("").value = "";
-    $("").value = "";
-    $("").value = "";
-    $("").value = "";
-    $("").value = "";
-    $("").checked = false;
-    $("").value = "";
-    $("").checked = false;
-    $("").value = "";
-    $("").value = "";
-    $("").value = "";
-}
+    $("#job-title").value = "";
+    $("#job-image").value = "";
+    $("#job-description").value = "";
+    $("#job-location").value = "";
+    $("#job-category").value = "";
+    $("#job-seniority").value = "";
+    $("#job-vacation").value = "";
+    $("#job-health-ensurance").value = "";
+    $("#job-internet").checked = false;
+    $("#job-salary").value = "";
+    $("#job-long-term").checked = false;
+    $("#job-lan-1").value = "";
+    $("#job-lan-2").value = "";
+    $("#job-lan-3").value = "";
+};
 
-$("#home-btn").addEventListener(`click`, () => getJobs());
-$("#create-job").addEventListener(`click`, () => newJObView());
-$("#submit-job").addEventListener(`click`, () => createNewJob());
-
-window.onload = getJobs();
+//$("#home-btn").addEventListener(`click`, () => getJobs());
+// $("#create-job").addEventListener(`click`, () => newJObView()); // vista de datos para nuevo job
+// $("#").addEventListener(`click`, () => createNewJob()); //boton de crear
