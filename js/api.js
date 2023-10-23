@@ -3,11 +3,10 @@ const getJobs = async () => {
         showView("spinner");
         let response = await fetch(`https://652753f2917d673fd76d931d.mockapi.io/api/jobs`);
         let data = await response.json();
-        renderHome(data)
 
-        //setTimeout(() => {
-        //    renderJobs(data)
-        //}, 2000);
+        setTimeout(() => {
+            renderHome(data);
+        }, 1000);
 
     } catch (error) {
         alert("Hubo un error")
@@ -23,8 +22,8 @@ const postJob = async (newJob) => {
         body: JSON.stringify(newJob),
     });
 
-    getJobs(); // crear funcion
-    cleanForm(); // crear funcion
+    getJobs();
+    //cleanForm();
 };
 
 // const getJobDetail = async (id) => {
@@ -43,3 +42,5 @@ const renderHome = (data) => {
     //getSenority(data);
     //getDepartments(data);
 };
+
+window.onload = getJobs();
