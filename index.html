@@ -80,162 +80,130 @@
             </div>
         </div>
         <!-- vista-createJob y vista-editJob -->
-        <div class="container">
-        <form id="job-form">
-            <div class="field-body">
-                <div class="field">
-                    <label class="label">Título del Trabajo</label>
-                    <div class="control">
-                        <input id="job-title" class="input" type="text">
-                    </div>
-                </div>
-                <div class="field">
-                    <label class="label">Imagen</label>
-                    <div class="control">
-                        <input id="job-image" class="input" type="text">
-                    </div>
-                </div>
-            </div>
-            <div class="field-body">
-                <div class="field">
-                    <label class="label">Descripción</label>
-                    <div class="control">
-                        <textarea id="job-description" class="textarea"></textarea>
-                    </div>
-                </div>
-                <div class="field">
-                    <label class="label">Ubicación</label>
-                    <div class="control is-fullwidth">
-                        <input id="job-location" class="input" type="text">
-                    </div>
-                    <div class="field-body">
-                        <div class="field">
-                            <label class="label">Seniority</label>
-                            <div class="control">
-                                <input id="job-seniority" class="input" type="text">
-                            </div>
-                        </div>
-                        <div class="field">
-                            <label class="label">Categoría</label>
-                            <div class="control">
-                                <input id="job-category" class="input" type="text">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="field-body">
-                <div class="field">
-                    <label class="label">Beneficios</label>
-                    <div class="field">
-                        <label class="label has-text-grey has-text-weight-normal">vacaciones</label>
-                        <div class="control">
-                            <input id="" class="input" type="text">
-                        </div>
-                    </div>
-                    <div class="field">
-                        <label class="label has-text-grey has-text-weight-normal">salud</label>
-                        <div class="control">
-                            <input id="" class="input" type="text">
-                        </div>
-                    </div>
-                    <div class="field">
-                        <div class="control">
-                            <label class="checkbox has-text-grey">
-                                <input id="job-internet" type="checkbox"> Internet Pagado
-                            </label>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div>
-                <div class="field">
-                    <label class="label">Salario</label>
-                    <div class="control">
-                        <input id="job-salary" class="input" type="text">
-                    </div>
-                </div>
-            </div>
-            <div class="field">
-                <label class="label">Trabajo a Largo Plazo</label>
-                <div class="control">
-                    <label class="checkbox">
-                        <input id="job-long-term" type="checkbox"> Sí
-                    </label>
-                </div>
-            </div>
-
-            <div class="field">
-                <label class="label">Idiomas Requeridos</label>
-                <div class="control">
-                    <input id="job-languages" class="input" type="text">
-                </div>
-            </div>
-
-            <div class="field">
-                <label class="label">Idiomas Adicionales</label>
-                <div class="control">
-                    <input id="job-lan-1" class="input" type="text">
-                    <input id="job-lan-2" class="input" type="text">
-                    <input id="job-lan-3" class="input" type="text">
-                </div>
-            </div>
-
-            <div class="field is-grouped">
-                <div class="control">
-                    <button type="submit" class="button is-primary">Guardar</button>
-                </div>
-                <div class="control">
-                    <button type="reset" class="button is-light">Limpiar</button>
-                </div>
-            </div>
-        </form>
-    </div>
-        <!-- <section class="view is-hidden" id="view-createJOb">
-            <div class="container">
-                <div class="columns is-multiline">
-                    <div class="column is-8-widescreen is-10-desktop is-offset-2-widescreen is-offset-1-desktop">
+        <section class="px-5 py-5 container view is-8-widescreen is-10-desktop is-offset-2-widescreen is-offset-1-desktop" id="view-createJOb"> 
+            <div class="columns is-multiline">
+                <div class="column">
+                    <form action="" id="job-form">
+                        <div class="field-body">
                             <div class="field">
-                                <label class="label" for="descripcion-input">Job title</label>
+                                <label class="label" for="job-title">Job title</label>
                                 <div class="control">
-                                    <div class="is-fullwidth">
-                                        <input class="input" type="text" name="" id="descripcion-input">
-                                    </div>
+                                    <input id="job-title" class="input" type="text">
                                 </div>
                             </div>
                             <div class="field">
-                                <label class="label" for="monto-input">Description</label>
+                                <label class="label" for="job-image">Imagen</label>
                                 <div class="control">
-                                    <div class="control">
-                                        <div class="is-fullwidth">
-                                            <textarea class="textarea"></textarea>
+                                    <input id="job-image" class="input" type="text">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="field-body">
+                            <div class="field">
+                                <label class="label" for="job-description">Description</label>
+                                <div class="control">
+                                    <textarea id="job-description" class="textarea"></textarea>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <label class="label" for="job-location">Location</label>
+                                <div class="control is-fullwidth">
+                                    <input id="job-location" class="input" type="text">
+                                </div>
+                                <div class="field-body">
+                                    <div class="field">
+                                        <label class="label" for="job-seniority">Seniority</label>
+                                        <div class="control">
+                                            <input id="job-seniority" class="input" type="text">
+                                        </div>
+                                    </div>
+                                    <div class="field">
+                                        <label class="label" for="job-category">Category</label>
+                                        <div class="control">
+                                            <input id="job-category" class="input" type="text">
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                        <div class="field-body">
                             <div class="field">
-                                <label class="label" for="tipo-select">Tags</label>
-                                <div class="control">
-                                    <div class="is-fullwidth">
-                                        <input class="input" type="text" name="" id="descripcion-input">
+                                <label class="label">Beneficios</label>
+                                <div class="field">
+                                    <label class="label has-text-grey has-text-weight-normal" for="job-vacation">Vacation</label>
+                                    <div class="control">
+                                        <input id="job-vacation" class="input" type="text">
                                     </div>
-                                    <div class="is-fullwidth mt-2">
-                                        <input class="input" type="text" name="" id="descripcion-input">
+                                </div>
+                                <div class="field">
+                                    <label class="label has-text-grey has-text-weight-normal" for="job-health-ensurance">salud</label>
+                                    <div class="control">
+                                        <input id="job-health-ensurance" class="input" type="text">
                                     </div>
-                                    <div class="is-fullwidth mt-2">
-                                        <input class="input" type="text" name="" id="descripcion-input">
+                                </div>
+                                <div class="field">
+                                    <div class="control">
+                                        <label class="checkbox has-text-grey" for="job-internet">
+                                            <input id="job-internet" type="checkbox"> Internet Pagado
+                                        </label>
                                     </div>
                                 </div>
                             </div>
-                            <div class="buttons mt-4">
-                                <button class="button is-success" id="agregar-operacion-boton">
-                                    Edit
-                                </button>
+                        </div>
+                    </form>
+                </div>
+                <div class="column">
+                    <form action="">
+                        <div class="field">
+                            <label class="label" for="job-salary">Salario</label>
+                            <div class="control">
+                                <input id="job-salary" class="input" type="text">
                             </div>
-                    </div>
+                            <div class="field">
+                                <label class="label" for="job-long-term">Trabajo a Largo Plazo</label>
+                                <div class="control">
+                                    <label class="checkbox">
+                                        <input id="job-long-term" type="checkbox"> Sí
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <label class="label" for="job-languages">Idiomas Requeridos</label>
+                                <div class="control">
+                                    <input id="job-languages" class="input" type="text">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label class="label" for="job-lan-1">Idiomas Adicionales</label>
+                            <div class="control">
+                                <input id="job-lan-1" class="input" type="text">
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label class="label" for="job-lan-2"></label>
+                            <div class="control">
+                                <input id="job-lan-2" class="input" type="text">
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label class="label" for="job-lan-3"></label>
+                            <div class="control">
+                                <input id="job-lan-3" class="input" type="text">
+                            </div>
+                        </div>
+                        <div class="field is-grouped">
+                            <div class="control">
+                                <button type="submit" class="button is-primary">Guardar</button>
+                            </div>
+                            <div class="control">
+                                <button type="reset" class="button is-light">Limpiar</button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
-        </section> -->
+        </section>
     </main>
     <script src="js/main.js"></script>
     <script src="js/api.js"></script>
