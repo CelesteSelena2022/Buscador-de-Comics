@@ -29,7 +29,9 @@ const renderJobs = (data) => {
         }
 };
 
+// CREAR CARDS
 const createNewJob = () =>  {
+    showView("view-createJOb");
     let newJob = {
     name: $("#job-title").value,
     image: $("#job-image").value,
@@ -45,9 +47,9 @@ const createNewJob = () =>  {
     salary: $("#job-salary").value,
     long_term: $("#job-long-term").checked,
     languages: $("#job-languages").value,
-    languages: [$("#job-lan-1").value, $("#job-lan-2").value, $("#job-lan-1").value] // array
+    languages: [$("#job-lan-1").value, $("#job-lan-2").value, $("#job-lan-3").value] // array
     }
-    postJob(newJob)
+    //postJob(newJob)
 };
 
 //Limpiar el formulario
@@ -133,5 +135,5 @@ const renderFilterOptions = (filterType) => {
 }
 
 //$("#home-btn").addEventListener(`click`, () => getJobs());
-// $("#create-job").addEventListener(`click`, () => newJObView()); // vista de datos para nuevo job
-// $("#").addEventListener(`click`, () => createNewJob()); //boton de crear
+//$().addEventListener(`click`, () => newJObView()); // vista de datos para nuevo job
+$("#create-job").addEventListener(`click`, () => createNewJob()); //boton de crear nuevas jobs
