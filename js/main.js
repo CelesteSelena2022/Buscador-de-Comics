@@ -3,7 +3,6 @@ const $$ = (selector) => document.querySelectorAll(selector);
 
 const showView = (view) => {
     $$(".view").forEach((view) => view.classList.add("is-hidden"));
-    console.log(view);
     $(`#${view}`).classList.remove("is-hidden");
 };
 
@@ -51,8 +50,6 @@ const createNewJob = () =>  {
     postJob(newJob)
 };
 
-
-
 //Limpiar el formulario
 const cleanForm = () => {
     $("#job-title").value = "";
@@ -70,6 +67,70 @@ const cleanForm = () => {
     $("#job-lan-2").value = "";
     $("#job-lan-3").value = "";
 };
+
+// FUNCIONALIDAD PARA LOS SELECTS
+// Se declaran las funciones globales
+const seniorities = [];
+const categories = [];
+const locations = [];
+
+// Toma el value del select seleccionado
+const selectFilter = $("#select-filter");
+
+selectFilter.addEventListener(`change`, () => {
+    const selectFilter = $("#select-filter").value;
+    console.log(selectFilter);
+
+    renderFilterOptions(selectFilter);
+})
+
+// LLena el array de las variables globales
+const getFilterOptions = (data) => {
+    data.forEach(job => {
+        if (!locations.includes(job.location)) {
+            locations.push(job.location);
+        }
+
+        if (!categories.includes(job.category)) {
+            categories.push(job.category);
+        }
+
+        if (!seniorities.includes(job.seniority)) {
+            seniorities.push(job.seniority);
+        }
+    });
+
+    console.log(locations, categories, seniorities);
+}
+
+// Completa el select segun la option del primero
+const renderFilterOptions = (filterType) => {
+    if(filterType === "LOCATION") {
+        $("#select-option-filter").innerHTML = "";
+        $("#select-option-filter").innerHTML = "<option selected>Location</option>";
+
+        locations.forEach(location => {
+            $("#select-option-filter").innerHTML += `<option>${location}</option>`;
+        });
+    }
+    else if(filterType === "CATEGORY"){
+        $("#select-option-filter").innerHTML = "";
+        $("#select-option-filter").innerHTML = "<option selected>Category</option>";
+
+        categories.forEach(category => {
+            $("#select-option-filter").innerHTML += `<option>${category}</option>`;
+        });
+    } else if(filterType === "SENIORITY"){
+        $("#select-option-filter").innerHTML = "";
+        $("#select-option-filter").innerHTML = "<option selected>Seniority</option>";
+
+        seniorities.forEach(seniority => {
+            $("#select-option-filter").innerHTML += `<option>${seniority}</option>`;
+        });
+    } else {
+        $("#select-option-filter").innerHTML = `<option selected>Select a filter</option>`;
+    }
+}
 
 //$("#home-btn").addEventListener(`click`, () => getJobs());
 // $("#create-job").addEventListener(`click`, () => newJObView()); // vista de datos para nuevo job
