@@ -9,7 +9,7 @@ const showView = (view) => {
 const renderJobs = (data) => {
     showView("cards");
     $("#container-cards").innerHTML = "";
-        for (let { name, description, location, category, seniority } of data) {
+        for (let { name, description, location, category, seniority, id} of data) {
             $("#container-cards").innerHTML += `
             <div class="column is-one-third">
                 <div class="card">
@@ -20,7 +20,7 @@ const renderJobs = (data) => {
                         <span class="tag is-info">${seniority}</span>
                         <span class="tag is-info">${category}</span>
                         <div>
-                            <button class="button is-link mt-3">See Details</button>
+                            <button class="button is-link mt-3" onclick="getJobDetail('${id}')" id="${id}">See Details</button>
                         </div>
                     </div>
                 </div>
@@ -28,6 +28,32 @@ const renderJobs = (data) => {
             `;
         }
 };
+
+const showJobDetails = ({ name, image, description, location, category, seniority, benefits, salary, languages}) => {
+    showView("seeDetails");
+    $("#container-card").innerHTML = `
+        <div class="column is-one-third">
+            <div class="card">
+                <div class="card-content">
+                    <p class="title is-5">${name}</p>
+                    <p class="subtitle is-6">aaaaaaa</p>
+                    <span class="tag is-info"></span>
+                    <span class="tag is-info"></span>
+                    <span class="tag is-info"></span>
+                    <div>
+                        <button class="button is-link mt-3">See Details</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+}
+
+// DATOS COMPLETOS:
+//benefits.vacation, benefits.health_ensurance
+//languages[]; el unico que queda
+//languages: [$("#job-lan-1").value, $("#job-lan-2").value, $("#job-lan-3").value] // ELIMINAR array
+//CHECKED = long_term , benefits.internet_paid.checked
 
 // CREAR CARDS
 
@@ -105,8 +131,6 @@ const getFilterOptions = (data) => {
             seniorities.push(job.seniority);
         }
     });
-
-    console.log(locations, categories, seniorities);
 }
 
 // Completa el select segun la option del primero
