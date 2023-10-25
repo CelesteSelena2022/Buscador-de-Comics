@@ -93,68 +93,64 @@
             <div class="columns is-multiline">
                 <div class="column">
                     <form action="" id="job-form">
-                        <div class="field-body">
-                            <div class="field">
-                                <label class="label" for="job-title">Job title</label>
-                                <div class="control">
-                                    <input id="job-title" class="input" type="text">
-                                </div>
-                            </div>
-                            <div class="field">
-                                <label class="label" for="job-image">Image</label>
-                                <div class="control">
-                                    <input id="job-image" class="input" type="text">
-                                </div>
+                        <div class="field">
+                            <label class="label" for="job-title"></label>
+                            <div class="control">
+                                <input id="job-title" class="input with-custom-placeholder" type="text" placeholder="JOb title">
                             </div>
                         </div>
-                        <div class="field-body">
-                            <div class="field">
-                                <label class="label" for="job-description">Description</label>
-                                <div class="control">
-                                    <textarea id="job-description" class="textarea"></textarea>
-                                </div>
+                        <div class="field">
+                            <label class="label" for="job-description"></label>
+                            <div class="control">
+                                <textarea id="job-description" class="textarea with-custom-placeholder"
+                                    placeholder="Description"></textarea>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label class="label" for="job-salary"></label>
+                            <div class="control">
+                                <input id="job-salary" class="input with-custom-placeholder" type="text" placeholder="Salary">
                             </div>
                             <div class="field">
-                                <label class="label" for="job-location">Location</label>
+                                <label class="label" for="job-location"></label>
                                 <div class="control is-fullwidth">
-                                    <input id="job-location" class="input" type="text">
+                                    <input id="job-location" class="input with-custom-placeholder" type="text"
+                                        placeholder="Location">
                                 </div>
                                 <div class="field-body">
                                     <div class="field">
-                                        <label class="label" for="job-seniority">Seniority</label>
+                                        <label class="label" for="job-seniority"></label>
                                         <div class="control">
-                                            <input id="job-seniority" class="input" type="text">
+                                            <input id="job-seniority" class="input with-custom-placeholder" type="text"
+                                                placeholder="Seniority">
                                         </div>
                                     </div>
                                     <div class="field">
-                                        <label class="label" for="job-category">Category</label>
+                                        <label class="label" for="job-category"></label>
                                         <div class="control">
-                                            <input id="job-category" class="input" type="text">
+                                            <input id="job-category" class="input with-custom-placeholder" type="text"
+                                                placeholder="Category">
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="field-body">
-                            <div class="field">
-                                <label class="label">Benefits</label>
+                            <div class="field-body">
                                 <div class="field">
-                                    <label class="label has-text-grey has-text-weight-normal" for="job-vacation">Vacation</label>
+                                    <label class="label" for="job-long-term">Long Term Work</label>
                                     <div class="control">
-                                        <input id="job-vacation" class="input" type="text">
-                                    </div>
-                                </div>
-                                <div class="field">
-                                    <label class="label has-text-grey has-text-weight-normal" for="job-health-ensurance">health</label>
-                                    <div class="control">
-                                        <input id="job-health-ensurance" class="input" type="text">
-                                    </div>
-                                </div>
-                                <div class="field">
-                                    <div class="control">
-                                        <label class="checkbox has-text-grey" for="job-internet">
-                                            <input id="job-internet" type="checkbox"> Paid Internet
+                                        <label class="checkbox">
+                                            <input id="job-long-term" type="checkbox"> Yeah
                                         </label>
+                                    </div>
+                                </div>
+                                <div class="field">
+                                    <div class="field is-grouped">
+                                        <div class="control">
+                                            <button type="submit" class="button is-primary is-medium" id="create-job">Keep</button>
+                                        </div>
+                                        <div class="control">
+                                            <button type="reset" class="button is-light is-medium" id="clean-form">Clean</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -164,22 +160,40 @@
                 <div class="column">
                     <form action="">
                         <div class="field">
-                            <label class="label" for="job-salary">Salary</label>
+                            <label class="label" for="job-image"></label>
                             <div class="control">
-                                <input id="job-salary" class="input" type="text">
+                                <input id="job-image" class="input with-custom-placeholder" type="text" placeholder="Image">
                             </div>
-                            <div class="field">
-                                <label class="label" for="job-long-term">Long Term Work</label>
-                                <div class="control">
-                                    <label class="checkbox">
-                                        <input id="job-long-term" type="checkbox"> Yeah
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="field">
-                                <label class="label" for="job-languages">Required Languages</label>
-                                <div class="control">
-                                    <input id="job-languages" class="input" type="text">
+                        </div>
+                        <div class="field-body">
+                            <figure class="image is-128x128">
+                                <img src="https://bulma.io/images/placeholders/128x128.png">
+                            </figure>
+                            <div class="field-body ml-3">
+                                <div class="field">
+                                    <label class="label">Benefits</label>
+                                    <div class="field">
+                                        <label class="label has-text-grey has-text-weight-normal" for="job-vacation"></label>
+                                        <div class="control">
+                                            <input id="job-vacation" class="input with-custom-placeholder" type="text"
+                                                placeholder="Vacation">
+                                        </div>
+                                    </div>
+                                    <div class="field">
+                                        <label class="label has-text-grey has-text-weight-normal"
+                                            for="job-health-ensurance"></label>
+                                        <div class="control">
+                                            <input id="job-health-ensurance" class="input with-custom-placeholder" type="text"
+                                                placeholder="health">
+                                        </div>
+                                    </div>
+                                    <div class="field">
+                                        <div class="control">
+                                            <label class="checkbox" for="job-internet">
+                                                <input id="job-internet" type="checkbox"> Paid Internet
+                                            </label>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -199,14 +213,6 @@
                             <label class="label" for="job-lan-3"></label>
                             <div class="control">
                                 <input id="job-lan-3" class="input" type="text">
-                            </div>
-                        </div>
-                        <div class="field is-grouped">
-                            <div class="control">
-                                <button type="submit" class="button is-primary" id="create-job">Keep</button>
-                            </div>
-                            <div class="control">
-                                <button type="reset" class="button is-light" id="clean-form">Clean</button>
                             </div>
                         </div>
                     </form>

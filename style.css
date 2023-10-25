@@ -25,4 +25,8 @@
     100% {
         transform: rotate(360deg);
     }
-    } 
+} 
+
+.with-custom-placeholder::placeholder {
+    color: #242120; 
+}
