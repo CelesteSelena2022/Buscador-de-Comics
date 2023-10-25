@@ -113,7 +113,6 @@ const createNewJob = () =>  {
     },
     salary: $("#job-salary").value,
     long_term: $("#job-long-term").checked,
-    languages: $("#job-languages").value,
     languages: [$("#job-lan-1").value, $("#job-lan-2").value, $("#job-lan-3").value] // array
     }
     postJob(newJob)
