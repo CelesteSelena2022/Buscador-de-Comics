@@ -22,15 +22,14 @@ const postJob = async (newJob) => {
     //cleanForm();
 };
 
-// const getJobDetail = async (id) => {
-//     showView("spinner");
-//     let response = await fetch(`https://652753f2917d673fd76d931d.mockapi.io/api/jobs/${id}`
-//     );
-//     let data = await response.json();
-
-//     showJobDetails(data); // crear funcion
-//     editValues(data); // crear funcion
-// };
+const getJobDetail = async (id) => {
+    showView("spinner");
+    let response = await fetch(`https://652753f2917d673fd76d931d.mockapi.io/api/jobs/${id}`
+    );
+    let data = await response.json();
+    showJobDetails(data); // crear funcion
+    //editValues(data); // crear funcion
+};
 
 const renderHome = (data) => {
     renderJobs(data);
