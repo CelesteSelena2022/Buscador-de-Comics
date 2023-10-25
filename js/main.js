@@ -29,31 +29,68 @@ const renderJobs = (data) => {
         }
 };
 
-const showJobDetails = ({ name, image, description, location, category, seniority, benefits, salary, languages}) => {
+//VER DETALLE DE LA CARD
+const showJobDetails = ({ name, image, description, location, category, seniority, benefits, salary, long_term, languages}) => {
     showView("seeDetails");
     $("#container-card").innerHTML = `
-        <div class="column is-one-third">
-            <div class="card">
-                <div class="card-content">
-                    <p class="title is-5">${name}</p>
-                    <p class="subtitle is-6">aaaaaaa</p>
-                    <span class="tag is-info"></span>
-                    <span class="tag is-info"></span>
-                    <span class="tag is-info"></span>
-                    <div>
-                        <button class="button is-link mt-3">See Details</button>
+    <div class="columns card py-2 px-2">
+        <div class="column">
+            <div class="card-content">
+                <p class="title is-5">${name}</p>
+                <figure class="image is-128x128">
+                    <img src="${image}">
+                </figure>
+                <p class="subtitle is-6 pt-2">${description}</p>
+                <span class="tag is-info">${location}</span>
+                <span class="tag is-info">${category}</span>
+                <span class="tag is-info">${seniority}</span>
+                <div class="field is-grouped is-grouped-multiline mt-2">
+                    <div class="control">
+                        <div class="tags has-addons">
+                            <span class="tag is-link is-light">Salary</span>
+                            <span class="tag is-link">${salary}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="field is-grouped is-flex is-align-items-center">
+                    <div class="control">
+                        <button class="button is-success" type="button" id="">Edit Job</button>
+                    </div>
+                    <div class="control">
+                        <button class="button is-danger" type="button" id="">Delete Job</button>
                     </div>
                 </div>
             </div>
         </div>
+        <div class="column">
+            <div class="card-content">
+                <p class="title is-6">benefits</p>
+                <div class="content">
+                    <ul>
+                        <li>${benefits.health_ensurance}</li>
+                        <li>${benefits.vacation}</li>
+                    </ul>
+                    <label class="checkbox"> paid internet
+                        <input type="checkbox"> ${benefits.internet_paid}
+                    </label>
+                </div>
+                <p class="title is-6">required languages</p>
+                <div class="content">
+                    <ul>
+                        <li>${languages[0]}</li>
+                        <li>${languages[1]}</li>
+                        <li>${languages[2]}</li>
+                    </ul>
+                    <p class="title is-6">long-term</p>
+                    <label class="checkbox "> 
+                        <input type="checkbox"> ${long_term}
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
     `;
 }
-
-// DATOS COMPLETOS:
-//benefits.vacation, benefits.health_ensurance
-//languages[]; el unico que queda
-//languages: [$("#job-lan-1").value, $("#job-lan-2").value, $("#job-lan-3").value] // ELIMINAR array
-//CHECKED = long_term , benefits.internet_paid.checked
 
 // CREAR CARDS
 
