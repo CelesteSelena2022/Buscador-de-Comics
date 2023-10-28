@@ -28,6 +28,7 @@ const getJobDetail = async (id) => {
     );
     let data = await response.json();
     showJobDetails(data);
+    showEditJOb(data);
 };
 
 const editGetJob = async (id, editedJOb) => {
@@ -40,8 +41,7 @@ const editGetJob = async (id, editedJOb) => {
             headers: { "Content-Type": "application/json; charset=UTF-8" },
         }
     );
-    let data = await response.json();
-    showEditJOb(data);
+    getJobs();
 };
 
 const renderHome = (data) => {
