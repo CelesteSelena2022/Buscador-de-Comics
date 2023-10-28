@@ -30,7 +30,7 @@ const renderJobs = (data) => {
 };
 
 //VER DETALLE DE LA CARD
-const showJobDetails = ({ name, image, description, location, category, seniority, benefits, salary, long_term, languages}) => {
+const showJobDetails = ({ name, image, description, location, category, seniority, benefits, salary, long_term, languages, id}) => {
     showView("seeDetails");
     $("#container-card").innerHTML = `
     <div class="columns card py-2 px-2">
@@ -92,11 +92,54 @@ const showJobDetails = ({ name, image, description, location, category, seniorit
     `;
 }
 
-// CREAR CARDS
+// EDIT VALUE
 
-const newJObView = () => {
-    showView("view-createJOb");
-}
+const showEditJOb = ({ name, image, description, location, category, seniority, benefits, salary, long_term, languages, id}) => {
+
+    showView("view-editJob");
+
+    $("#edit-job-title").value = name;
+    $("#edit-job-image").value = image;
+    $("#edit-job-description").value = description;
+    $("#edit-job-location").value = location;
+    $("#edit-job-category").value = category;
+    $("#edit-job-seniority").value = seniority;
+    $("#edit-job-vacation").value = benefits.vacation;
+    $("#edit-job-health-ensurance").value = benefits.health_ensurance;
+    $("#edit-job-internet").checked = benefits.internet_paid;
+    $("#edit-job-salary").value = salary;
+    $("#edit-job-long-term").checked = long_term;
+    $("#edit-job-lan-1").value = languages[0];
+    $("#edit-job-lan-2").value = languages[1];
+    $("#edit-job-lan-3").value = languages[2];
+
+    $("#btn-edit-job").addEventListener(`click`, (e) => {
+        e.preventDefault();
+        editJOb(id);
+    })
+};
+
+const editJOb = (id) => {
+
+    let editedJOb = {
+        name: $("#edit-job-title").value,
+        image: $("#edit-job-image").value,
+        description: $("#edit-job-description").value,
+        location: $("#edit-job-location").value,
+        category: $("#edit-job-category").value,
+        seniority: $("#edit-job-seniority").value,
+        benefits: {
+            vacation: $("#edit-job-vacation").value,
+            health_ensurance: $("#edit-job-health-ensurance").value,
+        },
+        salary: $("#edit-job-salary").value,
+        languages: [$("#edit-job-lan-1").value, $("#edit-job-lan-2").value, $("#edit-job-lan-3").value]
+    };
+
+    editGetJob(id, editedJOb);
+};
+
+// CREAR CARDS
 
 const createNewJob = () =>  {
     let newJob = {
