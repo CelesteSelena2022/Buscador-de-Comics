@@ -27,8 +27,21 @@ const getJobDetail = async (id) => {
     let response = await fetch(`https://652753f2917d673fd76d931d.mockapi.io/api/jobs/${id}`
     );
     let data = await response.json();
-    showJobDetails(data); // crear funcion
-    //editValues(data); // crear funcion
+    showJobDetails(data);
+};
+
+const editGetJob = async (id, editedJOb) => {
+    let response = await fetch(
+        `https://652753f2917d673fd76d931d.mockapi.io/api/jobs/${id}
+        `, 
+        {
+            method: "PUT",
+            body: JSON.stringify(editedJOb),
+            headers: { "Content-Type": "application/json; charset=UTF-8" },
+        }
+    );
+    let data = await response.json();
+    showEditJOb(data);
 };
 
 const renderHome = (data) => {
