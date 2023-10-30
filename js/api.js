@@ -44,6 +44,17 @@ const editGetJob = async (id, editedJOb) => {
     getJobs();
 };
 
+const deleteJOb = async (id) => {
+    let response = await fetch(
+        `https://652753f2917d673fd76d931d.mockapi.io/api/jobs/${id}
+        `,
+        {
+            method: 'DELETE',
+        }
+    );
+    getJobs();
+};
+
 const renderHome = (data) => {
     renderJobs(data);
     //getShips(data);
