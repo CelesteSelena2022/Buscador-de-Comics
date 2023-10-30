@@ -62,7 +62,7 @@ const showJobDetails = ({ name, image, description, location, category, seniorit
                         <button class="button is-success" type="button" onclick="showViewEditJOb('${id}')" id="${id}">Edit Job</button>
                     </div>
                     <div class="control">
-                        <button class="button is-danger" type="button" id="">Delete Job</button>
+                        <button class="button is-danger" type="button" onclick="showViewDeleteJob('${id}')" id="${id}">Delete Job</button>
                     </div>
                 </div>
             </div>
@@ -95,6 +95,28 @@ const showJobDetails = ({ name, image, description, location, category, seniorit
         </div>
     </div>
     `;
+};
+
+const showViewDeleteJob = (id) => {
+    showView("container-delete-job");
+
+    $("#container-delete-job").innerHTML = `
+    <div class="columns is-vcentered notification is-danger is-light mt-3">
+        <div class="column is-narrow">
+            <p class="subtitle is-6">Are you sure to delete this job?</p>
+        </div>
+        <div class="column is-narrow">
+            <div class="buttons">
+                <button class="button is-danger is-small" onclick="confirmDeleteJob('${id}')" id="${id}" >Delete</button>
+                <button class="button is-light is-small" onclick='showView("seeDetails")' id="${id}">Cancel</button>
+            </div>
+        </div>
+    </div>
+    `;
+};
+
+const confirmDeleteJob= (id) => {
+    deleteJOb(id);
 };
 
 const showViewEditJOb = (id) => {
