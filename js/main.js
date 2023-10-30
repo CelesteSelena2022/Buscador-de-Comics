@@ -20,7 +20,7 @@ const renderJobs = (data) => {
                         <span class="tag is-info">${seniority}</span>
                         <span class="tag is-info">${category}</span>
                         <div>
-                            <button class="button is-link mt-3" onclick="getJobDetail('${id}')" id="${id}">See Details</button>
+                            <button class="button is-link mt-3" onclick="showViewDetails('${id}')" id="${id}">See Details</button>
                         </div>
                     </div>
                 </div>
@@ -29,9 +29,14 @@ const renderJobs = (data) => {
         }
 };
 
+const showViewDetails = (id) => {
+    getJobById(id);
+    showView("seeDetails");
+}
+
 //VER DETALLE DE LA CARD
 const showJobDetails = ({ name, image, description, location, category, seniority, benefits, salary, long_term, languages, id}) => {
-    showView("seeDetails");
+    
     $("#container-card").innerHTML = `
     <div class="columns card py-2 px-2">
         <div class="column">
@@ -54,7 +59,7 @@ const showJobDetails = ({ name, image, description, location, category, seniorit
                 </div>
                 <div class="field is-grouped is-flex is-align-items-center">
                     <div class="control">
-                        <button class="button is-success" type="button" id="">Edit Job</button>
+                        <button class="button is-success" type="button" onclick="showViewEditJOb('${id}')" id="${id}">Edit Job</button>
                     </div>
                     <div class="control">
                         <button class="button is-danger" type="button" id="">Delete Job</button>
@@ -90,13 +95,15 @@ const showJobDetails = ({ name, image, description, location, category, seniorit
         </div>
     </div>
     `;
-}
+};
+
+const showViewEditJOb = (id) => {
+    getJobById(id);
+    showView("view-editJob");
+};
 
 // EDIT VALUE
-
 const showEditJOb = ({ name, image, description, location, category, seniority, benefits, salary, long_term, languages, id}) => {
-
-    showView("view-editJob");
 
     $("#edit-job-title").value = name;
     $("#edit-job-image").value = image;

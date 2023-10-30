@@ -22,7 +22,7 @@ const postJob = async (newJob) => {
     //cleanForm();
 };
 
-const getJobDetail = async (id) => {
+const getJobById = async (id) => {
     showView("spinner");
     let response = await fetch(`https://652753f2917d673fd76d931d.mockapi.io/api/jobs/${id}`
     );
