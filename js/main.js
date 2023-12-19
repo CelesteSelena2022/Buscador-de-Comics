@@ -219,8 +219,6 @@ const selectFilter = $("#select-filter");
 
 selectFilter.addEventListener(`change`, () => {
     const selectFilter = $("#select-filter").value;
-    console.log(selectFilter);
-
     renderFilterOptions(selectFilter);
 })
 
@@ -243,7 +241,7 @@ const getFilterOptions = (data) => {
 
 // Completa el select segun la option del primero
 const renderFilterOptions = (filterType) => {
-    if(filterType === "LOCATION") {
+    if(filterType === "location") {
         $("#select-option-filter").innerHTML = "";
         $("#select-option-filter").innerHTML = "<option selected>Location</option>";
 
@@ -251,14 +249,14 @@ const renderFilterOptions = (filterType) => {
             $("#select-option-filter").innerHTML += `<option>${location}</option>`;
         });
     }
-    else if(filterType === "CATEGORY"){
+    else if(filterType === "category"){
         $("#select-option-filter").innerHTML = "";
         $("#select-option-filter").innerHTML = "<option selected>Category</option>";
 
         categories.forEach(category => {
             $("#select-option-filter").innerHTML += `<option>${category}</option>`;
         });
-    } else if(filterType === "SENIORITY"){
+    } else if(filterType === "seniority"){
         $("#select-option-filter").innerHTML = "";
         $("#select-option-filter").innerHTML = "<option selected>Seniority</option>";
 
@@ -270,6 +268,21 @@ const renderFilterOptions = (filterType) => {
     }
 }
 
+const filterJobs = () => {
+    let param = $("#select-filter").value;
+    let value = $("#select-option-filter").value;
+    filterJob(param, value);
+};
+
+const clearFilters = () => {
+    $("#select-filter").value = "";
+    $("#select-option-filter").value = "";
+
+    getJobs();
+};
+
+$("#clear-filters").addEventListener(`click`, () => clearFilters());
+$("#btn-filter-job").addEventListener(`click`, () => filterJobs());
 $("#home-btn").addEventListener(`click`, () => getJobs()); //boton para volver al inicio
 $("#create-job-view").addEventListener(`click`, () => newJObView()); // vista de datos para nuevo job
 $("#create-job").addEventListener(`click`, () => createNewJob()); //boton de guardar nuevas jobs

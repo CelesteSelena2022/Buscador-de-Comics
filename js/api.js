@@ -1,13 +1,18 @@
-const getJobs = async () => {
+const getJobs = async (filterParams) => {
     showView("spinner");
-    let response = await fetch(`https://652753f2917d673fd76d931d.mockapi.io/api/jobs`);
+
+    const apiUrl = new URL('https://652753f2917d673fd76d931d.mockapi.io/api/jobs');
+
+    if (filterParams) {
+        Object.keys(filterParams).forEach(key => {
+            apiUrl.searchParams.append(key, filterParams[key]);
+        });
+    }
+
+    let response = await fetch(apiUrl);
     let data = await response.json();
-
-    setTimeout(() => {
         renderHome(data);
-    }, 1000);
-
-    getFilterOptions(data);
+        getFilterOptions(data);
 };
 
 const postJob = async (newJob) => {
@@ -53,6 +58,29 @@ const deleteJOb = async (id) => {
         }
     );
     getJobs();
+};
+
+const filterJob = (param, value) => {
+    const url = new URL(`https://652753f2917d673fd76d931d.mockapi.io/api/jobs`);
+    url.searchParams.append(`${param}`, `${value}`);
+    console.log(param, value);
+
+    fetch(url, {
+        method: 'GET',
+        headers: {'content-type':'application/json'},
+    })
+    .then(res => {
+        if (res.ok) {
+            return res.json();
+        }
+        throw new Error('Network response was not ok.');
+    })
+    .then(jobs => {
+        getJobs({ [param]: value });
+    })
+    .catch(error => {
+        console.error('Hubo un problema con la operación fetch:', error);
+    });
 };
 
 const renderHome = (data) => {
