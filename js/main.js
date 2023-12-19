@@ -284,6 +284,8 @@ const clearFilters = () => {
 $("#clear-filters").addEventListener(`click`, () => clearFilters());
 $("#btn-filter-job").addEventListener(`click`, () => filterJobs());
 $("#home-btn").addEventListener(`click`, () => getJobs()); //boton para volver al inicio
-$("#create-job-view").addEventListener(`click`, () => newJObView()); // vista de datos para nuevo job
+$("#create-job-view").addEventListener(`click`, () => {
+    showView("view-createJOb"); // vista de datos para nuevo job
+});
 $("#create-job").addEventListener(`click`, () => createNewJob()); //boton de guardar nuevas jobs
 $("#clean-form").addEventListener(`click`, () => cleanForm()); //boton para limpiar form
