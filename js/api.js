@@ -24,7 +24,6 @@ const postJob = async (newJob) => {
     });
 
     getJobs();
-    //cleanForm();
 };
 
 const getJobById = async (id) => {
@@ -85,9 +84,6 @@ const filterJob = (param, value) => {
 
 const renderHome = (data) => {
     renderJobs(data);
-    //getShips(data);
-    //getSenority(data);
-    //getDepartments(data);
 };
 
 window.onload = getJobs();
