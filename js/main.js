@@ -6,6 +6,9 @@ const showView = (view) => {
     $(`#${view}`).classList.remove("is-hidden");
 };
 
+$("#home-btn").addEventListener(`click`, () => getJobs()); //boton para volver al inicio
+
+//Renderiza las jobs que vienen de la API
 const renderJobs = (data) => {
     showView("cards");
     $("#container-cards").innerHTML = "";
@@ -32,7 +35,7 @@ const renderJobs = (data) => {
 const showViewDetails = (id) => {
     getJobById(id);
     showView("seeDetails");
-}
+};
 
 //VER DETALLE DE LA CARD
 const showJobDetails = ({ name, image, description, location, category, seniority, benefits, salary, long_term, languages, id}) => {
@@ -97,6 +100,7 @@ const showJobDetails = ({ name, image, description, location, category, seniorit
     `;
 };
 
+//MUESTRA EL CARTEL PARA CONFIRMAR LA ELIMINACION DE LA JOB
 const showViewDeleteJob = (id) => {
     showView("container-delete-job");
 
@@ -124,7 +128,7 @@ const showViewEditJOb = (id) => {
     showView("view-editJob");
 };
 
-// EDIT VALUE
+// MUESTRA LA VISTA PARA EDITAR UNA JOB CON SUS VALORES
 const showEditJOb = ({ name, image, description, location, category, seniority, benefits, salary, long_term, languages, id}) => {
 
     $("#edit-job-title").value = name;
@@ -148,8 +152,8 @@ const showEditJOb = ({ name, image, description, location, category, seniority, 
     })
 };
 
+//TOMA EL VALOR DE LOS NUEVOS DATOS EDITADOS EN LA JOB
 const editJOb = (id) => {
-
     let editedJOb = {
         name: $("#edit-job-title").value,
         image: $("#edit-job-image").value,
@@ -168,8 +172,11 @@ const editJOb = (id) => {
     editGetJob(id, editedJOb);
 };
 
-// CREAR CARDS
+$("#create-job-view").addEventListener(`click`, () => {
+    showView("view-createJOb"); // vista de datos para crear el nuevo job
+});
 
+// CREAR CARDS
 const createNewJob = () =>  {
     let newJob = {
     name: $("#job-title").value,
@@ -190,7 +197,10 @@ const createNewJob = () =>  {
     postJob(newJob)
 };
 
-//Limpiar el formulario
+$("#create-job").addEventListener(`click`, () => createNewJob()); //boton para crear la nueva JOb
+
+$("#clean-form").addEventListener(`click`, () => cleanForm()); //boton para limpiar formulario cuando lo estamos creando
+
 const cleanForm = () => {
     $("#job-title").value = "";
     $("#job-image").value = "";
@@ -268,11 +278,15 @@ const renderFilterOptions = (filterType) => {
     }
 }
 
+$("#btn-filter-job").addEventListener(`click`, () => filterJobs());
+
 const filterJobs = () => {
     let param = $("#select-filter").value;
     let value = $("#select-option-filter").value;
     filterJob(param, value);
 };
+
+$("#clear-filters").addEventListener(`click`, () => clearFilters());
 
 const clearFilters = () => {
     $("#select-filter").value = "";
@@ -280,12 +294,3 @@ const clearFilters = () => {
 
     getJobs();
 };
-
-$("#clear-filters").addEventListener(`click`, () => clearFilters());
-$("#btn-filter-job").addEventListener(`click`, () => filterJobs());
-$("#home-btn").addEventListener(`click`, () => getJobs()); //boton para volver al inicio
-$("#create-job-view").addEventListener(`click`, () => {
-    showView("view-createJOb"); // vista de datos para nuevo job
-});
-$("#create-job").addEventListener(`click`, () => createNewJob()); //boton de guardar nuevas jobs
-$("#clean-form").addEventListener(`click`, () => cleanForm()); //boton para limpiar form

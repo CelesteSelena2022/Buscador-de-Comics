@@ -24,7 +24,6 @@ const postJob = async (newJob) => {
     });
 
     getJobs();
-    //cleanForm();
 };
 
 const getJobById = async (id) => {
@@ -63,7 +62,6 @@ const deleteJOb = async (id) => {
 const filterJob = (param, value) => {
     const url = new URL(`https://652753f2917d673fd76d931d.mockapi.io/api/jobs`);
     url.searchParams.append(`${param}`, `${value}`);
-    console.log(param, value);
 
     fetch(url, {
         method: 'GET',
@@ -85,9 +83,6 @@ const filterJob = (param, value) => {
 
 const renderHome = (data) => {
     renderJobs(data);
-    //getShips(data);
-    //getSenority(data);
-    //getDepartments(data);
 };
 
 window.onload = getJobs();
