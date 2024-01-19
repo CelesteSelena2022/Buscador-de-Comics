@@ -12,13 +12,16 @@ $("#home-btn").addEventListener(`click`, () => getJobs()); //boton para volver a
 const renderJobs = (data) => {
     showView("cards");
     $("#container-cards").innerHTML = "";
-        for (let { name, description, location, category, seniority, id} of data) {
+        for (let { name, description, image, location, category, seniority, id} of data) {
             $("#container-cards").innerHTML += `
             <div class="column is-one-third">
                 <div class="card">
                     <div class="card-content">
                         <p class="title is-5">${name}</p>
                         <p class="subtitle is-6">${description}</p>
+                        <figure class="image is-128x128 card has-border mb-2 ">
+                        <img src="${image}">
+                        </figure>
                         <span class="tag is-info">${location}</span>
                         <span class="tag is-info">${seniority}</span>
                         <span class="tag is-info">${category}</span>
@@ -172,6 +175,34 @@ const editJOb = (id) => {
     editGetJob(id, editedJOb);
 };
 
+// toma la url y la convierte en el fondo de la job editada
+
+const imgJob = document.getElementById(`img-job`);
+const urlEditImg = document.getElementById(`edit-job-image`);
+
+urlEditImg.addEventListener(`input`, () => changeBackgroundEdit());
+
+const changeBackgroundEdit = () => {
+    imgJob.style.backgroundImage = `url("${urlEditImg.value}")`;
+    imgJob.style.backgroundRepeat= `no-repeat`;
+    imgJob.style.backgroundSize = `cover`;
+    imgJob.style.backgroundPosition = `center`;
+};
+//---- 
+
+// const imgCreateJob = document.getElementById(`img-create-job`);
+// const urlCreateImg = document.getElementById(`create-job-image`);
+
+// urlCreateImg.addEventListener(`input`, () => changeBackgroundCreate());
+
+// const changeBackgroundCreate = () => {
+//     imgCreateJob.style.backgroundImage = `url("${urlCreateImg.value}")`;
+//     imgCreateJob.style.backgroundRepeat= `no-repeat`;
+//     imgCreateJob.style.backgroundSize = `cover`;
+//     imgCreateJob.style.backgroundPosition = `center`;
+// };
+// 
+
 $("#create-job-view").addEventListener(`click`, () => {
     showView("view-createJOb"); // vista de datos para crear el nuevo job
 });
@@ -194,12 +225,12 @@ const createNewJob = () =>  {
     long_term: $("#job-long-term").checked,
     languages: [$("#job-lan-1").value, $("#job-lan-2").value, $("#job-lan-3").value] // array
     }
-    postJob(newJob)
+    postJob(newJob);
 };
 
 $("#create-job").addEventListener(`click`, () => createNewJob()); //boton para crear la nueva JOb
 
-$("#clean-form").addEventListener(`click`, () => cleanForm()); //boton para limpiar formulario cuando lo estamos creando
+$("#clean-form").addEventListener(`click`, () => cleanForm()); //boton para limpiar formulario cuando estamos creando un nuevo job
 
 const cleanForm = () => {
     $("#job-title").value = "";
