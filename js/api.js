@@ -23,7 +23,7 @@ const postJob = async (newJob) => {
         body: JSON.stringify(newJob),
     });
 
-    getJobs();
+    await getJobs();
 };
 
 const getJobById = async (id) => {
