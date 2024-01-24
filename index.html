@@ -9,6 +9,9 @@
 </head>
 <body>
     <main>
+    <!-- =============================
+    Navegacion del sitio
+    ============================= -->
         <nav class="navbar is-info" role="navigation" aria-label="main navigation">
             <div class="navbar-start">
                 <div class="field is-grouped is-grouped-centered is-flex is-align-items-center">
@@ -24,6 +27,9 @@
                 </div>
             </div>
         </nav>
+        <!-- =============================
+        Busqueda por filtros
+        ============================= -->
         <section>
             <div class="container mt-5">
                 <form action="">
@@ -55,75 +61,89 @@
                 </form>
             </div>
         </section>
-        <!-- Spinner -->
+        <!-- =============================
+        Spinner de carga
+        ============================= -->
         <div class="view container-spinner" id="spinner">
             <span class="loader"></span>
         </div>
+        <!-- =============================
+        Renderizacion de las Jobs 
+        ============================= -->
         <section class="section view" id="cards">
             <div class="container">
                 <div class="columns is-multiline" id="container-cards">
                     <!-- cards -->
                 </div>
             </div>
-        </section>  
+        </section>
+        <!-- =============================
+        Contenedor para detalles del Job
+        ============================= -->
         <section class="section view" id="seeDetails">
             <div class="container">
                 <div class="columns is-multiline">
                     <div class="column is-8" id="container-card">
-                        <!-- card details -->
                     </div>
                 </div>
             </div>
-        </section>      
+        </section>
+        <!-- =============================
+        Advertencia al eliminar una Job
+        ============================= -->
         <div class="view" id="container-delete-job">
-            <!-- advertencia al eliminar una  card -->
         </div>
-        <!-- vista-editJob -->
+        <!-- =============================
+        Estructura para editar una Job
+        ============================= -->
         <section class="container view is-8-widescreen is-10-desktop is-offset-2-widescreen is-offset-1-desktop" id="view-editJob"> 
             <div class="columns is-multiline">
                 <div class="column">
                     <form action="" id="">
+                        <!-- ===== editar nombre ===== -->
                         <div class="field">
                             <label class="label" for="edit-job-title"></label>
                             <div class="control">
-                                <input id="edit-job-title" class="input with-custom-placeholder" type="text" placeholder="JOb title">
+                                <input id="edit-job-title" class="input with-custom-placeholder" type="text">
                             </div>
                         </div>
+                        <!-- ===== editar descripcion ===== -->
                         <div class="field">
                             <label class="label" for="edit-job-description"></label>
                             <div class="control">
-                                <textarea id="edit-job-description" class="textarea with-custom-placeholder"
-                                    placeholder="Description"></textarea>
+                                <textarea id="edit-job-description" class="textarea with-custom-placeholder"></textarea>
                             </div>
                         </div>
+                        <!-- ===== editar salario ===== -->
                         <div class="field">
                             <label class="label" for="edit-job-salary"></label>
                             <div class="control">
-                                <input id="edit-job-salary" class="input with-custom-placeholder" type="text" placeholder="Salary">
+                                <input id="edit-job-salary" class="input with-custom-placeholder" type="text">
                             </div>
+                            <!-- ===== editar location ===== -->
                             <div class="field">
                                 <label class="label" for="edit-job-location"></label>
                                 <div class="control is-fullwidth">
-                                    <input id="edit-job-location" class="input with-custom-placeholder" type="text"
-                                        placeholder="Location">
+                                    <input id="edit-job-location" class="input with-custom-placeholder" type="text">
                                 </div>
+                                <!-- ===== editar Seniority ===== -->
                                 <div class="field-body">
                                     <div class="field">
                                         <label class="label" for="edit-job-seniority"></label>
                                         <div class="control">
-                                            <input id="edit-job-seniority" class="input with-custom-placeholder" type="text"
-                                                placeholder="Seniority">
+                                            <input id="edit-job-seniority" class="input with-custom-placeholder" type="text">
                                         </div>
                                     </div>
+                                    <!-- ===== editar Category ===== -->
                                     <div class="field">
                                         <label class="label" for="edit-job-category"></label>
                                         <div class="control">
-                                            <input id="edit-job-category" class="input with-custom-placeholder" type="text"
-                                                placeholder="Category">
+                                            <input id="edit-job-category" class="input with-custom-placeholder" type="text">
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            <!-- ===== editar Long Term Work ===== -->
                             <div class="field">
                                 <label class="label" for="edit-job-long-term">Long Term Work</label>
                                 <div class="control">
@@ -137,13 +157,15 @@
                 </div>
                 <div class="column">
                     <form action="">
+                        <!-- ===== editar url de la imagen ===== -->
                         <div class="field">
                             <label class="label" for="edit-job-image"></label>
                             <div class="control">
-                                <input id="edit-job-image" class="input with-custom-placeholder" type="text" placeholder="url image">
+                                <input id="edit-job-image" class="input with-custom-placeholder" type="text">
                             </div>
                         </div>
                         <div class="field-body">
+                            <!-- ===== imagen ===== -->
                             <div class="has-text-centered" aria-label="imagen de la job">
                                 <div class="box image is-128x128" id="edit-img-job">
                                     <h6 class="subtitle is-6">Image</h6>
@@ -151,22 +173,24 @@
                             </div>
                             <div class="field-body ml-3">
                                 <div class="field">
+                                    <!-- ===== editar Benefits ===== -->
                                     <label class="label">Benefits</label>
+                                    <!-- editar Vacation -->
                                     <div class="field">
                                         <label class="label has-text-grey has-text-weight-normal" for="edit-job-vacation"></label>
                                         <div class="control">
-                                            <input id="edit-job-vacation" class="input with-custom-placeholder" type="text"
-                                                placeholder="Vacation">
+                                            <input id="edit-job-vacation" class="input with-custom-placeholder" type="text">
                                         </div>
                                     </div>
+                                    <!-- editar health -->
                                     <div class="field">
                                         <label class="label has-text-grey has-text-weight-normal"
                                             for="edit-job-health-ensurance"></label>
                                         <div class="control">
-                                            <input id="edit-job-health-ensurance" class="input with-custom-placeholder" type="text"
-                                                placeholder="health">
+                                            <input id="edit-job-health-ensurance" class="input with-custom-placeholder" type="text">
                                         </div>
                                     </div>
+                                    <!-- editar Paid Internet -->
                                     <div class="field">
                                         <div class="control">
                                             <label class="checkbox" for="edit-job-internet">
@@ -177,24 +201,29 @@
                                 </div>
                             </div>
                         </div>
+                        <!-- ===== editar Languages ===== -->
                         <div class="field">
+                            <!-- editar Languages 1 -->
                             <label class="label" for="edit-job-lan-1">Languages</label>
                             <div class="control">
                                 <input id="edit-job-lan-1" class="input" type="text">
                             </div>
                         </div>
                         <div class="field">
+                            <!-- editar Languages 2 -->
                             <label class="label" for="edit-job-lan-2"></label>
                             <div class="control">
                                 <input id="edit-job-lan-2" class="input" type="text">
                             </div>
                         </div>
                         <div class="field">
+                            <!-- editar Languages 3 -->
                             <label class="label" for="edit-job-lan-3"></label>
                             <div class="control">
                                 <input id="edit-job-lan-3" class="input" type="text">
                             </div>
                         </div>
+                        <!-- ===== button Edit ===== -->
                         <div class="field is-flex is-justify-content-end">
                             <div class="control">
                                 <button type="submit" class="button is-primary is-medium" id="btn-edit-job">Edit</button>
@@ -204,17 +233,21 @@
                 </div>
             </div>
         </section>
-        <!-- vista-createJob -->
+        <!-- =============================
+        Estructura para crear una Job
+        ============================= -->
         <section class="px-5 py-5 container view is-8-widescreen is-10-desktop is-offset-2-widescreen is-offset-1-desktop view" id="view-createJOb"> 
             <div class="columns is-multiline">
                 <div class="column">
                     <form action="" id="job-form">
+                        <!-- ===== nombre de la job ===== -->
                         <div class="field">
                             <label class="label" for="job-title"></label>
                             <div class="control">
                                 <input id="job-title" class="input with-custom-placeholder" type="text" placeholder="JOb title">
                             </div>
                         </div>
+                        <!-- ===== descripcion de la job ===== -->
                         <div class="field">
                             <label class="label" for="job-description"></label>
                             <div class="control">
@@ -223,17 +256,20 @@
                             </div>
                         </div>
                         <div class="field">
+                            <!-- ===== Salary ===== -->
                             <label class="label" for="job-salary"></label>
                             <div class="control">
                                 <input id="job-salary" class="input with-custom-placeholder" type="text" placeholder="Salary">
                             </div>
                             <div class="field">
+                                <!-- ===== location ===== -->
                                 <label class="label" for="job-location"></label>
                                 <div class="control is-fullwidth">
                                     <input id="job-location" class="input with-custom-placeholder" type="text"
                                         placeholder="Location">
                                 </div>
                                 <div class="field-body">
+                                    <!-- ===== Seniority ===== -->
                                     <div class="field">
                                         <label class="label" for="job-seniority"></label>
                                         <div class="control">
@@ -241,6 +277,7 @@
                                                 placeholder="Seniority">
                                         </div>
                                     </div>
+                                    <!-- ===== Category ===== -->
                                     <div class="field">
                                         <label class="label" for="job-category"></label>
                                         <div class="control">
@@ -250,6 +287,7 @@
                                     </div>
                                 </div>
                             </div>
+                            <!-- ===== Long Term Work ===== -->
                             <div class="field-body">
                                 <div class="field">
                                     <label class="label" for="job-long-term">Long Term Work</label>
@@ -259,6 +297,7 @@
                                         </label>
                                     </div>
                                 </div>
+                                <!-- ===== buttons ===== -->
                                 <div class="field">
                                     <div class="field is-grouped">
                                         <div class="control">
@@ -275,6 +314,7 @@
                 </div>
                 <div class="column">
                     <form action="">
+                        <!-- ===== url image ===== -->
                         <div class="field">
                             <label class="label" for="job-image"></label>
                             <div class="control">
@@ -282,6 +322,7 @@
                             </div>
                         </div>
                         <div class="field-body">
+                            <!-- ===== imagen ===== -->
                             <div class="has-text-centered" aria-label="nueva imagen de la job">
                                 <div class="box image is-128x128" id="create-img-job">
                                     <h6 class="subtitle is-6">Image</h6>
@@ -289,7 +330,9 @@
                             </div>
                             <div class="field-body ml-3">
                                 <div class="field">
+                                    <!-- ===== Benefits ===== -->
                                     <label class="label">Benefits</label>
+                                    <!-- Vacation -->
                                     <div class="field">
                                         <label class="label has-text-grey has-text-weight-normal" for="job-vacation"></label>
                                         <div class="control">
@@ -297,6 +340,7 @@
                                                 placeholder="Vacation">
                                         </div>
                                     </div>
+                                    <!-- health -->
                                     <div class="field">
                                         <label class="label has-text-grey has-text-weight-normal"
                                             for="job-health-ensurance"></label>
@@ -305,6 +349,7 @@
                                                 placeholder="health">
                                         </div>
                                     </div>
+                                    <!-- Paid Internet -->
                                     <div class="field">
                                         <div class="control">
                                             <label class="checkbox" for="job-internet">
@@ -315,19 +360,23 @@
                                 </div>
                             </div>
                         </div>
+                        <!-- ===== Additional Languages ===== -->
                         <div class="field">
+                            <!-- Languages 1 -->
                             <label class="label" for="job-lan-1">Additional Languages</label>
                             <div class="control">
                                 <input id="job-lan-1" class="input" type="text">
                             </div>
                         </div>
                         <div class="field">
+                            <!-- Languages 2 -->
                             <label class="label" for="job-lan-2"></label>
                             <div class="control">
                                 <input id="job-lan-2" class="input" type="text">
                             </div>
                         </div>
                         <div class="field">
+                            <!-- Languages 3 -->
                             <label class="label" for="job-lan-3"></label>
                             <div class="control">
                                 <input id="job-lan-3" class="input" type="text">

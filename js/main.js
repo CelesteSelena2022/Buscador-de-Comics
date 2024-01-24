@@ -304,6 +304,7 @@ const renderFilterOptions = (filterType) => {
 
 $("#btn-filter-job").addEventListener(`click`, () => filterJobs());
 
+//funcion para filtrar las jobs
 const filterJobs = () => {
     let param = $("#select-filter").value;
     let value = $("#select-option-filter").value;
@@ -312,6 +313,7 @@ const filterJobs = () => {
 
 $("#clear-filters").addEventListener(`click`, () => clearFilters());
 
+//limpiar filtros de busqueda
 const clearFilters = () => {
     $("#select-filter").value = "";
     $("#select-option-filter").value = "";
