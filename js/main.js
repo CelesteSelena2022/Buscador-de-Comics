@@ -12,13 +12,16 @@ $("#home-btn").addEventListener(`click`, () => getJobs()); //boton para volver a
 const renderJobs = (data) => {
     showView("cards");
     $("#container-cards").innerHTML = "";
-        for (let { name, description, location, category, seniority, id} of data) {
+        for (let { name, description, image, location, category, seniority, id} of data) {
             $("#container-cards").innerHTML += `
             <div class="column is-one-third">
                 <div class="card">
                     <div class="card-content">
                         <p class="title is-5">${name}</p>
                         <p class="subtitle is-6">${description}</p>
+                        <figure class="image is-128x128 card has-border mb-2 ">
+                        <img src="${image}">
+                        </figure>
                         <span class="tag is-info">${location}</span>
                         <span class="tag is-info">${seniority}</span>
                         <span class="tag is-info">${category}</span>
@@ -198,6 +201,27 @@ const createNewJob = () =>  {
 };
 
 $("#create-job").addEventListener(`click`, () => createNewJob()); //boton para crear la nueva JOb
+
+//toma la url y la convierte en el fondo de la job creada
+const setBackgroundProperties = (urlInput, targetElement) => {
+    urlInput.addEventListener('input', () => {
+        targetElement.style.backgroundImage = `url("${urlInput.value}")`;
+        targetElement.style.backgroundRepeat = 'no-repeat';
+        targetElement.style.backgroundSize = 'cover';
+        targetElement.style.backgroundPosition = 'center';
+    });
+};
+
+//createImgJob
+const urlCreateImg = $("#job-image");
+const createImgJob = $("#create-img-job");
+setBackgroundProperties(urlCreateImg, createImgJob);
+
+//editImgJob
+const urlEditImg = $("#edit-job-image");
+const editImgJob = $("#edit-img-job");
+setBackgroundProperties(urlEditImg, editImgJob);
+//----------------
 
 $("#clean-form").addEventListener(`click`, () => cleanForm()); //boton para limpiar formulario cuando lo estamos creando
 
