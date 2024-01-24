@@ -1,3 +1,4 @@
+// Renderizar la interfaz de usuario con los datos obtenidos
 const getJobs = async (filterParams) => {
     showView("spinner");
 
@@ -15,6 +16,7 @@ const getJobs = async (filterParams) => {
         getFilterOptions(data);
 };
 
+// Envía una nueva oferta de trabajo a la API y  actualiza la lista de empleos
 const postJob = async (newJob) => {
     showView("spinner");
     await fetch(`https://652753f2917d673fd76d931d.mockapi.io/api/jobs`, {
@@ -26,6 +28,7 @@ const postJob = async (newJob) => {
     await getJobs();
 };
 
+//  Obtiene detalles específicos de un trabajo mediante su identificador desde la API
 const getJobById = async (id) => {
     showView("spinner");
     let response = await fetch(`https://652753f2917d673fd76d931d.mockapi.io/api/jobs/${id}`
@@ -35,6 +38,7 @@ const getJobById = async (id) => {
     showEditJOb(data);
 };
 
+// Envía una solicitud PUT a la API para editar un trabajo específico, y actualiza la lista de empleos
 const editGetJob = async (id, editedJOb) => {
     let response = await fetch(
         `https://652753f2917d673fd76d931d.mockapi.io/api/jobs/${id}
@@ -48,6 +52,7 @@ const editGetJob = async (id, editedJOb) => {
     getJobs();
 };
 
+// Envía una solicitud DELETE a la API para eliminar un trabajo específico y actualiza la lista de empleos 
 const deleteJOb = async (id) => {
     let response = await fetch(
         `https://652753f2917d673fd76d931d.mockapi.io/api/jobs/${id}
@@ -59,6 +64,7 @@ const deleteJOb = async (id) => {
     getJobs();
 };
 
+// Construye una URL con parámetros de filtro
 const filterJob = (param, value) => {
     const url = new URL(`https://652753f2917d673fd76d931d.mockapi.io/api/jobs`);
     url.searchParams.append(`${param}`, `${value}`);
