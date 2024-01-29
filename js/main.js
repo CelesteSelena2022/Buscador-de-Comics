@@ -18,10 +18,12 @@ const renderJobs = (data) => {
                 <div class="card">
                     <div class="card-content">
                         <p class="title is-5">${name}</p>
-                        <p class="subtitle is-6">${description}</p>
+                        <p class="subtitle is-6">${description.slice(0, 100)}...</p>
+                        <div class="content-img">
                         <figure class="image is-128x128 card has-border mb-2 ">
                         <img src="${image}">
                         </figure>
+                        </div>
                         <span class="tag is-info">${location}</span>
                         <span class="tag is-info">${seniority}</span>
                         <span class="tag is-info">${category}</span>
@@ -44,9 +46,9 @@ const showViewDetails = (id) => {
 const showJobDetails = ({ name, image, description, location, category, seniority, benefits, salary, long_term, languages, id}) => {
     
     $("#container-card").innerHTML = `
-    <div class="columns card py-2 px-2">
+    <div class="columns card py-2 px-2 is-flex is-flex-wrap-wrap is-justify-content-start">
         <div class="column">
-            <div class="card-content">
+            <div>
                 <p class="title is-5">${name}</p>
                 <figure class="image is-128x128">
                     <img src="${image}">
@@ -63,18 +65,18 @@ const showJobDetails = ({ name, image, description, location, category, seniorit
                         </div>
                     </div>
                 </div>
-                <div class="field is-grouped is-flex is-align-items-center">
-                    <div class="control">
+                <div class="field is-grouped is-flex is-flex-wrap-wrap">
+                    <div class="control m-1">
                         <button class="button is-success" type="button" onclick="showViewEditJOb('${id}')" id="${id}">Edit Job</button>
                     </div>
-                    <div class="control">
+                    <div class="control m-1">
                         <button class="button is-danger" type="button" onclick="showViewDeleteJob('${id}')" id="${id}">Delete Job</button>
                     </div>
                 </div>
             </div>
         </div>
         <div class="column">
-            <div class="card-content">
+            <div>
                 <p class="title is-6">benefits</p>
                 <div class="content">
                     <ul>

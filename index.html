@@ -34,8 +34,9 @@
         ============================= -->
         <section>
             <div class="container mt-5">
-                <form action="">
-                    <div class="field is-grouped is-grouped-centered">
+                <form action="" class="is-flex is-flex-wrap-wrap is-justify-content-center">
+                    <div class="field is-grouped">
+                        <!-- ===== tipo de filtro ===== -->
                         <div class="control">
                             <div class="select">
                                 <select id="select-filter">
@@ -46,6 +47,7 @@
                                 </select>
                             </div>
                         </div>
+                        <!-- ===== filtros ===== -->
                         <div class="control">
                             <div class="select">
                                 <select id="select-option-filter" class="is-4">
@@ -53,7 +55,10 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="control">
+                    </div>
+                    <!-- ===== botones ===== -->
+                    <div class="field is-grouped">
+                        <div class="control ml-3">
                             <button class="button is-info" type="button" id="btn-filter-job">Search</button>
                         </div>
                         <div class="control">
@@ -74,7 +79,7 @@
         ============================= -->
         <section class="section view" id="cards">
             <div class="container">
-                <div class="columns is-multiline" id="container-cards">
+                <div class="columns is-flex is-flex-wrap-wrap has-text-centered" id="container-cards">
                     <!-- cards -->
                 </div>
             </div>
@@ -83,11 +88,7 @@
         Contenedor para detalles del Job
         ============================= -->
         <section class="section view" id="seeDetails">
-            <div class="container">
-                <div class="columns is-multiline">
-                    <div class="column is-8" id="container-card">
-                    </div>
-                </div>
+            <div class="column is-8" id="container-card">
             </div>
         </section>
         <!-- =============================
@@ -99,7 +100,7 @@
         Estructura para editar una Job
         ============================= -->
         <section class="container view is-8-widescreen is-10-desktop is-offset-2-widescreen is-offset-1-desktop" id="view-editJob"> 
-            <div class="columns is-multiline">
+            <div class="columns is-multiline card-content">
                 <div class="column">
                     <form action="" id="">
                         <!-- ===== editar nombre ===== -->
@@ -239,14 +240,14 @@
         Estructura para crear una Job
         ============================= -->
         <section class="px-5 py-5 container view is-8-widescreen is-10-desktop is-offset-2-widescreen is-offset-1-desktop view" id="view-createJOb"> 
-            <div class="columns is-multiline">
+            <div class="columns is-multiline card-content">
                 <div class="column">
                     <form action="" id="job-form">
                         <!-- ===== nombre de la job ===== -->
                         <div class="field">
                             <label class="label" for="job-title"></label>
                             <div class="control">
-                                <input id="job-title" class="input with-custom-placeholder" type="text" placeholder="JOb title">
+                                <input id="job-title" class="input with-custom-placeholder" type="text" placeholder="JOb title" required>
                             </div>
                         </div>
                         <!-- ===== descripcion de la job ===== -->
@@ -254,7 +255,7 @@
                             <label class="label" for="job-description"></label>
                             <div class="control">
                                 <textarea id="job-description" class="textarea with-custom-placeholder"
-                                    placeholder="Description"></textarea>
+                                    placeholder="Description" required></textarea>
                             </div>
                         </div>
                         <div class="field">
@@ -268,7 +269,7 @@
                                 <label class="label" for="job-location"></label>
                                 <div class="control is-fullwidth">
                                     <input id="job-location" class="input with-custom-placeholder" type="text"
-                                        placeholder="Location">
+                                        placeholder="Location" required>
                                 </div>
                                 <div class="field-body">
                                     <!-- ===== Seniority ===== -->
@@ -276,7 +277,7 @@
                                         <label class="label" for="job-seniority"></label>
                                         <div class="control">
                                             <input id="job-seniority" class="input with-custom-placeholder" type="text"
-                                                placeholder="Seniority">
+                                                placeholder="Seniority" required>
                                         </div>
                                     </div>
                                     <!-- ===== Category ===== -->
@@ -284,7 +285,7 @@
                                         <label class="label" for="job-category"></label>
                                         <div class="control">
                                             <input id="job-category" class="input with-custom-placeholder" type="text"
-                                                placeholder="Category">
+                                                placeholder="Category" required>
                                         </div>
                                     </div>
                                 </div>
@@ -299,17 +300,6 @@
                                         </label>
                                     </div>
                                 </div>
-                                <!-- ===== buttons ===== -->
-                                <div class="field">
-                                    <div class="field is-grouped">
-                                        <div class="control">
-                                            <button type="button" class="button is-primary is-medium" id="create-job">Keep</button>
-                                        </div>
-                                        <div class="control">
-                                            <button type="button" class="button is-light is-medium" id="clean-form">Clean</button>
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </form>
@@ -320,7 +310,7 @@
                         <div class="field">
                             <label class="label" for="job-image"></label>
                             <div class="control">
-                                <input id="job-image" class="input with-custom-placeholder" type="text" placeholder="url image">
+                                <input id="job-image" class="input with-custom-placeholder" type="text" placeholder="url image" required>
                             </div>
                         </div>
                         <div class="field-body">
@@ -382,6 +372,17 @@
                             <label class="label" for="job-lan-3"></label>
                             <div class="control">
                                 <input id="job-lan-3" class="input" type="text">
+                            </div>
+                        </div>
+                        <!-- ===== buttons ===== -->
+                        <div class="field">
+                            <div class="field is-grouped">
+                                <div class="control">
+                                    <button type="button" class="button is-primary is-medium" id="create-job">Keep</button>
+                                </div>
+                                <div class="control">
+                                    <button type="button" class="button is-light is-medium" id="clean-form">Clean</button>
+                                </div>
                             </div>
                         </div>
                     </form>
