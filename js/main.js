@@ -15,21 +15,21 @@ const renderJobs = (data) => {
         for (let { name, description, image, location, category, seniority, id} of data) {
             $("#container-cards").innerHTML += `
             <div class="column is-one-third">
-                <div class="card">
-                    <div class="card-content">
-                        <p class="title is-5">${name}</p>
-                        <p class="subtitle is-6">${description.slice(0, 100)}...</p>
-                        <div class="content-img">
-                        <figure class="image is-128x128 card has-border mb-2 ">
-                        <img src="${image}">
+                <div class="card p-4 is-flex is-flex-direction-column is-justify-content-space-around" style="height: 100%;">
+                    <p class="title is-5">${name}</p>
+                    <p class="subtitle is-6">${description.slice(0, 100)}...</p>
+                    <div class="content-img">
+                        <figure class="image is-64x64 card has-border mb-2 ">
+                            <img src="${image}">
                         </figure>
-                        </div>
-                        <span class="tag is-info">${location}</span>
-                        <span class="tag is-info">${seniority}</span>
-                        <span class="tag is-info">${category}</span>
-                        <div>
-                            <button class="button is-link mt-3" onclick="showViewDetails('${id}')" id="${id}">See Details</button>
-                        </div>
+                    </div>
+                    <div class="is-flex is-flex-wrap-wrap is-justify-content-center">
+                        <span class="tag is-info m-1">${location}</span>
+                        <span class="tag is-info m-1">${seniority}</span>
+                        <span class="tag is-info m-1">${category}</span>
+                    </div>
+                    <div>
+                        <button class="button is-link mt-3" onclick="showViewDetails('${id}')" id="${id}">See Details</button>
                     </div>
                 </div>
             </div>
