@@ -285,6 +285,12 @@ const cleanForm = () => {
     $("#job-lan-1").value = "";
     $("#job-lan-2").value = "";
     $("#job-lan-3").value = "";
+
+    const createImgJob = $("#create-img-job");
+    createImgJob.style.backgroundImage = 'none';
+    createImgJob.style.backgroundRepeat = 'initial';
+    createImgJob.style.backgroundSize = 'initial';
+    createImgJob.style.backgroundPosition = 'initial';
 };
 
 // FUNCIONALIDAD PARA LOS SELECTS
