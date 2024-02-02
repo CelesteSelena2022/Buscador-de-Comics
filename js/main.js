@@ -157,7 +157,7 @@ const showEditJOb = ({ name, image, description, location, category, seniority, 
     })
 };
 
-//TOMA EL VALOR DE LOS NUEVOS DATOS EDITADOS EN LA JOB
+// TOMA EL VALOR DE LOS NUEVOS DATOS EDITADOS EN LA JOB
 const editJOb = (id) => {
     let editedJOb = {
         name: $("#edit-job-title").value,
@@ -181,6 +181,51 @@ $("#create-job-view").addEventListener(`click`, () => {
     showView("view-createJOb"); // vista de datos para crear el nuevo job
 });
 
+// VALIDACION DE FORMULARIO CREATEJOB
+const validateForm = (event) => {
+    try {
+        const fieldIds = ["job-title", "job-description", "job-location", "job-seniority", "job-category", "job-image"];
+
+        // Limpiar todos los mensajes de error y los estilos antes de realizar nuevas validaciones
+        fieldIds.forEach(fieldId => {
+            const customFieldError = $(`#${fieldId}-error`);
+            const inputField = $(`#${fieldId}`);
+            
+            customFieldError.textContent = "";
+            inputField.classList.remove("error-input"); // Elimina cualquier clase de estilo de error previa
+        });
+
+        let formIsValid = true;
+
+        fieldIds.forEach(fieldId => {
+            const fieldValue = $(`#${fieldId}`).value;
+            const customFieldError = $(`#${fieldId}-error`);
+            const inputField = $(`#${fieldId}`);
+
+            if (fieldValue.trim() === "") {
+                customFieldError.textContent = `Please enter the ${fieldId.replace(/-/g, ' ').toLowerCase()}.`;
+                formIsValid = false;
+
+                inputField.classList.add("error-input");
+            }
+        });
+
+        if (!formIsValid) {
+            event.preventDefault();
+        } else {
+            createNewJob();
+            alert("Form is valid!");
+
+            // Limpiar el formulario y los estilos después de enviar los datos
+            cleanForm();
+        }
+    } catch (error) {
+        console.error("Error in validateForm:", error);
+    }
+};
+
+$("#create-job").addEventListener('click', (event) => validateForm(event)); //valida el form antes de enviarlo
+
 // CREAR CARDS
 const createNewJob = () =>  {
     let newJob = {
@@ -201,8 +246,6 @@ const createNewJob = () =>  {
     }
     postJob(newJob)
 };
-
-$("#create-job").addEventListener(`click`, () => createNewJob()); //boton para crear la nueva JOb
 
 //toma la url y la convierte en el fondo de la job creada
 const setBackgroundProperties = (urlInput, targetElement) => {
