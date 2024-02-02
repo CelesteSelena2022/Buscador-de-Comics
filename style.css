@@ -42,3 +42,10 @@ img{
     height: 100%;
 }
 
+.error-message {
+    color: #000b55;
+}
+
+.error-input {
+    border: 2px solid #3e8ed0;
+}
