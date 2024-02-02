@@ -29,7 +29,7 @@ const renderJobs = (data) => {
                         <span class="tag is-info m-1">${category}</span>
                     </div>
                     <div>
-                        <button class="button is-link mt-3" onclick="showViewDetails('${id}')" id="${id}">See Details</button>
+                        <button class="button is-link mt-3" onclick="getJobById('${id}')" id="${id}">See Details</button>
                     </div>
                 </div>
             </div>
@@ -37,13 +37,10 @@ const renderJobs = (data) => {
         }
 };
 
-const showViewDetails = (id) => {
-    getJobById(id);
-    showView("seeDetails");
-};
-
 //VER DETALLE DE LA CARD
 const showJobDetails = ({ name, image, description, location, category, seniority, benefits, salary, long_term, languages, id}) => {
+
+    showView("seeDetails");
     
     $("#container-card").innerHTML = `
     <div class="columns card py-2 px-2 is-flex is-flex-wrap-wrap is-justify-content-start">
@@ -128,9 +125,8 @@ const confirmDeleteJob= (id) => {
     deleteJOb(id);
 };
 
-const showViewEditJOb = (id) => {
-    getJobById(id);
-    showView("view-editJob");
+const showViewEditJOb = () => {
+    $("#view-editJob").classList.remove("is-hidden");
 };
 
 // MUESTRA LA VISTA PARA EDITAR UNA JOB CON SUS VALORES
