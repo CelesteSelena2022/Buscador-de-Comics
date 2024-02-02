@@ -242,20 +242,21 @@
         <section class="px-5 py-5 container view is-8-widescreen is-10-desktop is-offset-2-widescreen is-offset-1-desktop view" id="view-createJOb"> 
             <div class="columns is-multiline card-content">
                 <div class="column">
-                    <form action="" id="job-form">
+                    <form action="/procesar_formulario" method="post" id="job-form">
                         <!-- ===== nombre de la job ===== -->
                         <div class="field">
                             <label class="label" for="job-title"></label>
                             <div class="control">
-                                <input id="job-title" class="input with-custom-placeholder" type="text" placeholder="JOb title" required>
+                                <input id="job-title" class="input with-custom-placeholder" type="text" placeholder="JOb title">
+                                <span id="job-title-error" class="error-message"></span>
                             </div>
                         </div>
                         <!-- ===== descripcion de la job ===== -->
                         <div class="field">
                             <label class="label" for="job-description"></label>
                             <div class="control">
-                                <textarea id="job-description" class="textarea with-custom-placeholder"
-                                    placeholder="Description" required></textarea>
+                                <textarea id="job-description" class="textarea with-custom-placeholder" placeholder="Description"></textarea>
+                                <span id="job-description-error" class="error-message"></span>
                             </div>
                         </div>
                         <div class="field">
@@ -268,24 +269,24 @@
                                 <!-- ===== location ===== -->
                                 <label class="label" for="job-location"></label>
                                 <div class="control is-fullwidth">
-                                    <input id="job-location" class="input with-custom-placeholder" type="text"
-                                        placeholder="Location" required>
+                                    <input id="job-location" class="input with-custom-placeholder" type="text" placeholder="Location">
+                                    <span id="job-location-error" class="error-message"></span>
                                 </div>
                                 <div class="field-body">
                                     <!-- ===== Seniority ===== -->
                                     <div class="field">
                                         <label class="label" for="job-seniority"></label>
                                         <div class="control">
-                                            <input id="job-seniority" class="input with-custom-placeholder" type="text"
-                                                placeholder="Seniority" required>
+                                            <input id="job-seniority" class="input with-custom-placeholder" type="text" placeholder="Seniority">
+                                            <span id="job-seniority-error" class="error-message"></span>
                                         </div>
                                     </div>
                                     <!-- ===== Category ===== -->
                                     <div class="field">
                                         <label class="label" for="job-category"></label>
                                         <div class="control">
-                                            <input id="job-category" class="input with-custom-placeholder" type="text"
-                                                placeholder="Category" required>
+                                            <input id="job-category" class="input with-custom-placeholder" type="text" placeholder="Category">
+                                            <span id="job-category-error" class="error-message"></span>
                                         </div>
                                     </div>
                                 </div>
@@ -310,7 +311,8 @@
                         <div class="field">
                             <label class="label" for="job-image"></label>
                             <div class="control">
-                                <input id="job-image" class="input with-custom-placeholder" type="text" placeholder="url image" required>
+                                <input id="job-image" class="input with-custom-placeholder" type="text" placeholder="url image">
+                                <span id="job-image-error" class="error-message"></span>
                             </div>
                         </div>
                         <div class="field-body">
@@ -328,8 +330,7 @@
                                     <div class="field">
                                         <label class="label has-text-grey has-text-weight-normal" for="job-vacation"></label>
                                         <div class="control">
-                                            <input id="job-vacation" class="input with-custom-placeholder" type="text"
-                                                placeholder="Vacation">
+                                            <input id="job-vacation" class="input with-custom-placeholder" type="text" placeholder="Vacation">
                                         </div>
                                     </div>
                                     <!-- health -->
@@ -337,8 +338,7 @@
                                         <label class="label has-text-grey has-text-weight-normal"
                                             for="job-health-ensurance"></label>
                                         <div class="control">
-                                            <input id="job-health-ensurance" class="input with-custom-placeholder" type="text"
-                                                placeholder="health">
+                                            <input id="job-health-ensurance" class="input with-custom-placeholder" type="text" placeholder="health">
                                         </div>
                                     </div>
                                     <!-- Paid Internet -->
