@@ -6,9 +6,9 @@ const showView = (view) => {
     $(`#${view}`).classList.remove("is-hidden");
 };
 
-$("#home-btn").addEventListener(`click`, () => getJobs()); //boton para volver al inicio
+$("#home-btn").addEventListener(`click`, () => getJobs()); //BOTON PARA VOLVER AL HOME 
 
-//Renderiza las jobs que vienen de la API
+// RENDERIZA LAS JOBS QUE VIENEN DE LA API
 const renderJobs = (data) => {
     showView("cards");
     $("#container-cards").innerHTML = "";
@@ -37,7 +37,7 @@ const renderJobs = (data) => {
         }
 };
 
-//VER DETALLE DE LA CARD
+// VER DETALLE DE LA CARD
 const showJobDetails = ({ name, image, description, location, category, seniority, benefits, salary, long_term, languages, id}) => {
 
     showView("seeDetails");
@@ -104,7 +104,7 @@ const showJobDetails = ({ name, image, description, location, category, seniorit
     `;
 };
 
-//MUESTRA EL CARTEL PARA CONFIRMAR LA ELIMINACION DE LA JOB
+// MUESTRA EL MODAL PARA CONFIRMAR LA ELIMINACION DE LA JOB
 const showViewDeleteJob = (id) => {
     showView("container-delete-job");
 
@@ -155,7 +155,7 @@ const showEditJOb = ({ name, image, description, location, category, seniority, 
     })
 };
 
-// TOMA EL VALOR DE LOS NUEVOS DATOS EDITADOS EN LA JOB
+// TOMA EL VALOR DE LOS NUEVOS DATOS EDITADOS EN LA JOB Y REALIZA EL PEDIDO A LA API
 const editJOb = (id) => {
     let editedJOb = {
         name: $("#edit-job-title").value,
@@ -181,7 +181,7 @@ $("#create-job-view").addEventListener(`click`, () => {
     showView("view-createJOb"); // vista de datos para crear el nuevo job
 });
 
-// VALIDACION DE FORMULARIO CREATEJOB
+// VALIDACION DE FORMULARIO ANTES DE CREAR UNA NUEVA JOB
 const validateForm = (event) => {
     try {
         const fieldIds = ["job-title", "job-description", "job-location", "job-seniority", "job-category", "job-image"];
@@ -247,7 +247,7 @@ const createNewJob = () =>  {
     postJob(newJob)
 };
 
-//toma la url y la convierte en el fondo de la job creada
+// TOMA LA URL Y LA CONVIERTE EN EL FONDO DE LA IMG DE LA JOB
 const setBackgroundProperties = (urlInput, targetElement) => {
     urlInput.addEventListener('input', () => {
         targetElement.style.backgroundImage = `url("${urlInput.value}")`;
@@ -294,12 +294,12 @@ const cleanForm = () => {
 };
 
 // FUNCIONALIDAD PARA LOS SELECTS
-// Se declaran las funciones globales
+//Se declaran las funciones globales
 const seniorities = [];
 const categories = [];
 const locations = [];
 
-// Toma el value del select seleccionado
+//Toma el value del select seleccionado
 const selectFilter = $("#select-filter");
 
 selectFilter.addEventListener(`change`, () => {
@@ -307,7 +307,7 @@ selectFilter.addEventListener(`change`, () => {
     renderFilterOptions(selectFilter);
 })
 
-// LLena el array de las variables globales
+//LLena el array de las variables globales
 const getFilterOptions = (data) => {
     data.forEach(job => {
         if (!locations.includes(job.location)) {
@@ -324,7 +324,7 @@ const getFilterOptions = (data) => {
     });
 }
 
-// Completa el select segun la option del primero
+//Completa el select segun la option del primero
 const renderFilterOptions = (filterType) => {
     if(filterType === "location") {
         $("#select-option-filter").innerHTML = "";
@@ -355,7 +355,7 @@ const renderFilterOptions = (filterType) => {
 
 $("#btn-filter-job").addEventListener(`click`, () => filterJobs());
 
-//funcion para filtrar las jobs
+// FUNCION PARA FILTRAR LAS JOBS
 const filterJobs = () => {
     let param = $("#select-filter").value;
     let value = $("#select-option-filter").value;
@@ -364,7 +364,7 @@ const filterJobs = () => {
 
 $("#clear-filters").addEventListener(`click`, () => clearFilters());
 
-//limpiar filtros de busqueda
+//LIMPIAR FILTROS DE BUSQUEDA
 const clearFilters = () => {
     $("#select-filter").value = "";
     $("#select-option-filter").value = "";
