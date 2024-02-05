@@ -41,6 +41,7 @@ const renderJobs = (data) => {
 const showJobDetails = ({ name, image, description, location, category, seniority, benefits, salary, long_term, languages, id}) => {
 
     showView("seeDetails");
+    const anyBenefitMarked = benefits.health_ensurance || benefits.vacation || benefits.internet_paid;
     
     $("#container-card").innerHTML = `
     <div class="columns card py-2 px-2 is-flex is-flex-wrap-wrap is-justify-content-start">
@@ -57,8 +58,8 @@ const showJobDetails = ({ name, image, description, location, category, seniorit
                 <div class="field is-grouped is-grouped-multiline mt-2">
                     <div class="control">
                         <div class="tags has-addons">
-                            <span class="tag is-link is-light">Salary</span>
-                            <span class="tag is-link">${salary}</span>
+                            ${salary ? `<span class="tag is-link is-light">Salary</span>
+                            <span class="tag is-link">${salary}</span>` : ''}
                         </div>
                     </div>
                 </div>
@@ -74,23 +75,23 @@ const showJobDetails = ({ name, image, description, location, category, seniorit
         </div>
         <div class="column">
             <div>
-                <p class="title is-6">benefits</p>
+            ${anyBenefitMarked ? '<p class="title is-6">benefits</p>' : ''}
                 <div class="content">
                     <ul>
-                        <li>${benefits.health_ensurance}</li>
-                        <li>${benefits.vacation}</li>
+                        ${benefits.health_ensurance ? `<li>${benefits.health_ensurance}</li>` : ''}
+                        ${benefits.vacation ? `<li>${benefits.vacation}</li>` : ''}
                     </ul>
                     <label class="checkbox">
                         <input type="checkbox" ${benefits.internet_paid ? 'checked' : ''}>
                         ${benefits.internet_paid ? 'Paid Internet' : 'No Paid Internet'}
                     </label>
                 </div>
-                <p class="title is-6">required languages</p>
+                ${languages.some(lang => lang) ? '<p class="title is-6">required languages</p>' : ''}
                 <div class="content">
                     <ul>
-                        <li>${languages[0]}</li>
-                        <li>${languages[1]}</li>
-                        <li>${languages[2]}</li>
+                        ${languages[0] ? `<li>${languages[0]}</li>` : ''}
+                        ${languages[1] ? `<li>${languages[1]}</li>` : ''}
+                        ${languages[2] ? `<li>${languages[2]}</li>` : ''}
                     </ul>
                     <p class="title is-6">long-term</p>
                     <label class="checkbox "> 
