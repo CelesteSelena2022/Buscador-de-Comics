@@ -28,14 +28,25 @@ const postJob = async (newJob) => {
     await getJobs();
 };
 
+//Funcion para ocultar el spinner
+const hideView = (view) => {
+    $(`#${view}`).classList.add("is-hidden");
+};
+
 //  Obtiene detalles específicos de un trabajo mediante su identificador desde la API
 const getJobById = async (id) => {
     showView("spinner");
-    let response = await fetch(`https://652753f2917d673fd76d931d.mockapi.io/api/jobs/${id}`
-    );
-    let data = await response.json();
-    showJobDetails(data);
-    showEditJOb(data);
+
+    try {
+        let response = await fetch(`https://652753f2917d673fd76d931d.mockapi.io/api/jobs/${id}`);
+        let data = await response.json();
+        showJobDetails(data);
+        hideView("spinner"); // Oculta el spinner después de mostrar los detalles
+        showEditJOb(data);
+    } catch (error) {
+        console.error("Error fetching job details:", error);
+        hideView("spinner"); // Oculta el spinner en caso de error
+    }
 };
 
 // Envía una solicitud PUT a la API para editar un trabajo específico, y actualiza la lista de empleos

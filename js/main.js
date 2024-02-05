@@ -6,9 +6,9 @@ const showView = (view) => {
     $(`#${view}`).classList.remove("is-hidden");
 };
 
-$("#home-btn").addEventListener(`click`, () => getJobs()); //boton para volver al inicio
+$("#home-btn").addEventListener(`click`, () => getJobs()); //BOTON PARA VOLVER AL HOME 
 
-//Renderiza las jobs que vienen de la API
+// RENDERIZA LAS JOBS QUE VIENEN DE LA API
 const renderJobs = (data) => {
     showView("cards");
     $("#container-cards").innerHTML = "";
@@ -29,7 +29,7 @@ const renderJobs = (data) => {
                         <span class="tag is-info m-1">${category}</span>
                     </div>
                     <div>
-                        <button class="button is-link mt-3" onclick="showViewDetails('${id}')" id="${id}">See Details</button>
+                        <button class="button is-link mt-3" onclick="getJobById('${id}')" id="${id}">See Details</button>
                     </div>
                 </div>
             </div>
@@ -37,13 +37,10 @@ const renderJobs = (data) => {
         }
 };
 
-const showViewDetails = (id) => {
-    getJobById(id);
-    showView("seeDetails");
-};
-
-//VER DETALLE DE LA CARD
+// VER DETALLE DE LA CARD
 const showJobDetails = ({ name, image, description, location, category, seniority, benefits, salary, long_term, languages, id}) => {
+
+    showView("seeDetails");
     
     $("#container-card").innerHTML = `
     <div class="columns card py-2 px-2 is-flex is-flex-wrap-wrap is-justify-content-start">
@@ -83,8 +80,9 @@ const showJobDetails = ({ name, image, description, location, category, seniorit
                         <li>${benefits.health_ensurance}</li>
                         <li>${benefits.vacation}</li>
                     </ul>
-                    <label class="checkbox"> paid internet
-                        <input type="checkbox"> ${benefits.internet_paid}
+                    <label class="checkbox">
+                        <input type="checkbox" ${benefits.internet_paid ? 'checked' : ''}>
+                        ${benefits.internet_paid ? 'Paid Internet' : 'No Paid Internet'}
                     </label>
                 </div>
                 <p class="title is-6">required languages</p>
@@ -96,7 +94,8 @@ const showJobDetails = ({ name, image, description, location, category, seniorit
                     </ul>
                     <p class="title is-6">long-term</p>
                     <label class="checkbox "> 
-                        <input type="checkbox"> ${long_term}
+                        <input type="checkbox" ${long_term ? 'checked' : ''}>
+                        ${long_term ? 'Long Term' : 'Not Long Term'}
                     </label>
                 </div>
             </div>
@@ -105,7 +104,7 @@ const showJobDetails = ({ name, image, description, location, category, seniorit
     `;
 };
 
-//MUESTRA EL CARTEL PARA CONFIRMAR LA ELIMINACION DE LA JOB
+// MUESTRA EL MODAL PARA CONFIRMAR LA ELIMINACION DE LA JOB
 const showViewDeleteJob = (id) => {
     showView("container-delete-job");
 
@@ -117,7 +116,7 @@ const showViewDeleteJob = (id) => {
         <div class="column is-narrow">
             <div class="buttons">
                 <button class="button is-danger is-small" onclick="confirmDeleteJob('${id}')" id="${id}" >Delete</button>
-                <button class="button is-light is-small" onclick='showView("seeDetails")' id="${id}">Cancel</button>
+                <button class="button is-light is-small" onclick="getJobs()" id="${id}">Cancel</button>
             </div>
         </div>
     </div>
@@ -128,9 +127,8 @@ const confirmDeleteJob= (id) => {
     deleteJOb(id);
 };
 
-const showViewEditJOb = (id) => {
-    getJobById(id);
-    showView("view-editJob");
+const showViewEditJOb = () => {
+    $("#view-editJob").classList.remove("is-hidden");
 };
 
 // MUESTRA LA VISTA PARA EDITAR UNA JOB CON SUS VALORES
@@ -157,7 +155,7 @@ const showEditJOb = ({ name, image, description, location, category, seniority, 
     })
 };
 
-//TOMA EL VALOR DE LOS NUEVOS DATOS EDITADOS EN LA JOB
+// TOMA EL VALOR DE LOS NUEVOS DATOS EDITADOS EN LA JOB Y REALIZA EL PEDIDO A LA API
 const editJOb = (id) => {
     let editedJOb = {
         name: $("#edit-job-title").value,
@@ -169,8 +167,10 @@ const editJOb = (id) => {
         benefits: {
             vacation: $("#edit-job-vacation").value,
             health_ensurance: $("#edit-job-health-ensurance").value,
+            internet_paid: $("#edit-job-internet").checked
         },
         salary: $("#edit-job-salary").value,
+        long_term: $("#edit-job-long-term").checked,
         languages: [$("#edit-job-lan-1").value, $("#edit-job-lan-2").value, $("#edit-job-lan-3").value]
     };
 
@@ -181,7 +181,52 @@ $("#create-job-view").addEventListener(`click`, () => {
     showView("view-createJOb"); // vista de datos para crear el nuevo job
 });
 
-// CREAR CARDS
+// VALIDACION DE FORMULARIO ANTES DE CREAR UNA NUEVA JOB
+const validateForm = (event) => {
+    try {
+        const fieldIds = ["job-title", "job-description", "job-location", "job-seniority", "job-category", "job-image"];
+
+        // Limpiar todos los mensajes de error y los estilos antes de realizar nuevas validaciones
+        fieldIds.forEach(fieldId => {
+            const customFieldError = $(`#${fieldId}-error`);
+            const inputField = $(`#${fieldId}`);
+            
+            customFieldError.textContent = "";
+            inputField.classList.remove("error-input"); // Elimina cualquier clase de estilo de error previa
+        });
+
+        let formIsValid = true;
+
+        fieldIds.forEach(fieldId => {
+            const fieldValue = $(`#${fieldId}`).value;
+            const customFieldError = $(`#${fieldId}-error`);
+            const inputField = $(`#${fieldId}`);
+
+            if (fieldValue.trim() === "") {
+                customFieldError.textContent = `Please enter the ${fieldId.replace(/-/g, ' ').toLowerCase()}.`;
+                formIsValid = false;
+
+                inputField.classList.add("error-input");
+            }
+        });
+
+        if (!formIsValid) {
+            event.preventDefault();
+        } else {
+            createNewJob();
+            alert("Form is valid!");
+
+            // Limpiar el formulario y los estilos después de enviar los datos
+            cleanForm();
+        }
+    } catch (error) {
+        console.error("Error in validateForm:", error);
+    }
+};
+
+$("#create-job").addEventListener('click', (event) => validateForm(event)); //valida el form antes de enviarlo
+
+// CREAR JOBS
 const createNewJob = () =>  {
     let newJob = {
     name: $("#job-title").value,
@@ -202,9 +247,7 @@ const createNewJob = () =>  {
     postJob(newJob)
 };
 
-$("#create-job").addEventListener(`click`, () => createNewJob()); //boton para crear la nueva JOb
-
-//toma la url y la convierte en el fondo de la job creada
+// TOMA LA URL Y LA CONVIERTE EN EL FONDO DE LA IMG DE LA JOB
 const setBackgroundProperties = (urlInput, targetElement) => {
     urlInput.addEventListener('input', () => {
         targetElement.style.backgroundImage = `url("${urlInput.value}")`;
@@ -242,15 +285,21 @@ const cleanForm = () => {
     $("#job-lan-1").value = "";
     $("#job-lan-2").value = "";
     $("#job-lan-3").value = "";
+
+    const createImgJob = $("#create-img-job");
+    createImgJob.style.backgroundImage = 'none';
+    createImgJob.style.backgroundRepeat = 'initial';
+    createImgJob.style.backgroundSize = 'initial';
+    createImgJob.style.backgroundPosition = 'initial';
 };
 
 // FUNCIONALIDAD PARA LOS SELECTS
-// Se declaran las funciones globales
+//Se declaran las funciones globales
 const seniorities = [];
 const categories = [];
 const locations = [];
 
-// Toma el value del select seleccionado
+//Toma el value del select seleccionado
 const selectFilter = $("#select-filter");
 
 selectFilter.addEventListener(`change`, () => {
@@ -258,7 +307,7 @@ selectFilter.addEventListener(`change`, () => {
     renderFilterOptions(selectFilter);
 })
 
-// LLena el array de las variables globales
+//LLena el array de las variables globales
 const getFilterOptions = (data) => {
     data.forEach(job => {
         if (!locations.includes(job.location)) {
@@ -275,7 +324,7 @@ const getFilterOptions = (data) => {
     });
 }
 
-// Completa el select segun la option del primero
+//Completa el select segun la option del primero
 const renderFilterOptions = (filterType) => {
     if(filterType === "location") {
         $("#select-option-filter").innerHTML = "";
@@ -306,7 +355,7 @@ const renderFilterOptions = (filterType) => {
 
 $("#btn-filter-job").addEventListener(`click`, () => filterJobs());
 
-//funcion para filtrar las jobs
+// FUNCION PARA FILTRAR LAS JOBS
 const filterJobs = () => {
     let param = $("#select-filter").value;
     let value = $("#select-option-filter").value;
@@ -315,7 +364,7 @@ const filterJobs = () => {
 
 $("#clear-filters").addEventListener(`click`, () => clearFilters());
 
-//limpiar filtros de busqueda
+//LIMPIAR FILTROS DE BUSQUEDA
 const clearFilters = () => {
     $("#select-filter").value = "";
     $("#select-option-filter").value = "";
