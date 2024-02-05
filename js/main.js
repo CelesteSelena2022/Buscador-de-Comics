@@ -80,8 +80,9 @@ const showJobDetails = ({ name, image, description, location, category, seniorit
                         <li>${benefits.health_ensurance}</li>
                         <li>${benefits.vacation}</li>
                     </ul>
-                    <label class="checkbox"> paid internet
-                        <input type="checkbox"> ${benefits.internet_paid}
+                    <label class="checkbox">
+                        <input type="checkbox" ${benefits.internet_paid ? 'checked' : ''}>
+                        ${benefits.internet_paid ? 'Paid Internet' : 'No Paid Internet'}
                     </label>
                 </div>
                 <p class="title is-6">required languages</p>
@@ -93,7 +94,8 @@ const showJobDetails = ({ name, image, description, location, category, seniorit
                     </ul>
                     <p class="title is-6">long-term</p>
                     <label class="checkbox "> 
-                        <input type="checkbox"> ${long_term}
+                        <input type="checkbox" ${long_term ? 'checked' : ''}>
+                        ${long_term ? 'Long Term' : 'Not Long Term'}
                     </label>
                 </div>
             </div>
@@ -114,7 +116,7 @@ const showViewDeleteJob = (id) => {
         <div class="column is-narrow">
             <div class="buttons">
                 <button class="button is-danger is-small" onclick="confirmDeleteJob('${id}')" id="${id}" >Delete</button>
-                <button class="button is-light is-small" onclick='showView("seeDetails")' id="${id}">Cancel</button>
+                <button class="button is-light is-small" onclick="getJobs()" id="${id}">Cancel</button>
             </div>
         </div>
     </div>
@@ -165,8 +167,10 @@ const editJOb = (id) => {
         benefits: {
             vacation: $("#edit-job-vacation").value,
             health_ensurance: $("#edit-job-health-ensurance").value,
+            internet_paid: $("#edit-job-internet").checked
         },
         salary: $("#edit-job-salary").value,
+        long_term: $("#edit-job-long-term").checked,
         languages: [$("#edit-job-lan-1").value, $("#edit-job-lan-2").value, $("#edit-job-lan-3").value]
     };
 
@@ -222,7 +226,7 @@ const validateForm = (event) => {
 
 $("#create-job").addEventListener('click', (event) => validateForm(event)); //valida el form antes de enviarlo
 
-// CREAR CARDS
+// CREAR JOBS
 const createNewJob = () =>  {
     let newJob = {
     name: $("#job-title").value,
